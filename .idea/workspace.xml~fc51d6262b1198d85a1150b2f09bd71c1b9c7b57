@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="f0cdd4d2-b2c6-4f1e-84ef-91faafe520eb" name="Default Changelist" comment="" />
-=======
     <list default="true" id="f0cdd4d2-b2c6-4f1e-84ef-91faafe520eb" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -11,7 +8,6 @@
     </list>
 <<<<<<< HEAD
 =======
->>>>>>> fc51d6262b1198d85a1150b2f09bd71c1b9c7b57
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
 >>>>>>> da317b1c0e249130dca34d665ca494c74d9ed225
     <option name="SHOW_DIALOG" value="false" />
@@ -19,10 +15,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1WNFjlYOO8Ox2hFwDI8Uum98x5t" />
-<<<<<<< HEAD
-  <component name="PropertiesComponent">
-=======
 <<<<<<< HEAD
 <<<<<<< HEAD
   <component name="ProjectViewState">
@@ -40,7 +36,6 @@
   <component name="PropertiesComponent">
 >>>>>>> da317b1c0e249130dca34d665ca494c74d9ed225
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
->>>>>>> fc51d6262b1198d85a1150b2f09bd71c1b9c7b57
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../DjangoTest" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -69,8 +64,6 @@
     </task>
     <servers />
   </component>
-<<<<<<< HEAD
-=======
 <<<<<<< HEAD
   <component name="WindowStateProjectService">
     <state x="447" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578984130681">
@@ -102,5 +95,4 @@
     </option>
 >>>>>>> da317b1c0e249130dca34d665ca494c74d9ed225
   </component>
->>>>>>> fc51d6262b1198d85a1150b2f09bd71c1b9c7b57
 </project>
