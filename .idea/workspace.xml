@@ -6,6 +6,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KU_Board/board/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/board/models.py" afterDir="false" />
     </list>
+<<<<<<< HEAD
+=======
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+>>>>>>> da317b1c0e249130dca34d665ca494c74d9ed225
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +19,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1WNFjlYOO8Ox2hFwDI8Uum98x5t" />
+<<<<<<< HEAD
 <<<<<<< HEAD
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,6 +31,10 @@
 >>>>>>> 019ee7fcab65c5eccd9e18f787de551ff920edfa
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+=======
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+>>>>>>> da317b1c0e249130dca34d665ca494c74d9ed225
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../DjangoTest" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -55,6 +64,7 @@
     </task>
     <servers />
   </component>
+<<<<<<< HEAD
   <component name="WindowStateProjectService">
     <state x="447" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578984130681">
       <screen x="0" y="0" width="1536" height="824" />
@@ -72,5 +82,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1578983962765" />
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+>>>>>>> da317b1c0e249130dca34d665ca494c74d9ed225
   </component>
 </project>
