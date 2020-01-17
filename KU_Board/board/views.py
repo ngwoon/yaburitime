@@ -4,7 +4,7 @@ from django.template import loader
 from datetime import datetime
 
 def board(request):
-    #template = loader.get_template('myapp/index.html')
+    #template = loader.get_template('board/index.html')
     now = datetime.now()
     context = {
         'current_date': now
