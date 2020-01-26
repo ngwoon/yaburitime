@@ -22,11 +22,13 @@
       <th>조회수</th>
     </tr>
     </thead>
-    <tbody>
+    <a>
 
     {% for board_posts in board_post %}
 
-    <tr>
+
+    <tr style = "cursor:pointer;" onClick = " location.href=''"> <!--게시글로 이동-->
+
       <td>{{board_posts.boardNum}}</td>
       <td>{{board_posts.nickname}}</td>
       <td>{{board_posts.title}}</td>
@@ -34,43 +36,14 @@
       <td>{{board_posts.Field}}</td>
     </tr>
 
+    </a></div>
+
     {% endfor %}
-    <tr>
-      <td>2</td>
-      <td>장유준</td>
-      <td>제목 예시</td>
-      <td>20/1/25</td>
-      <td>0</td>
-    </tr>
 
-    <tr>
-      <td>3</td>
-      <td>장유준</td>
-      <td>제목 예시</td>
-      <td>20/1/25</td>
-      <td>0</td>
-    </tr>
-
-    <tr>
-      <td>4</td>
-      <td>장유준</td>
-      <td>제목 예시</td>
-      <td>20/1/25</td>
-      <td>0</td>
-    </tr>
-
-    <tr>
-      <td>5</td>
-      <td>장유준</td>
-      <td>제목 예시</td>
-      <td>20/1/25</td>
-      <td>0</td>
-    </tr>
 
     </tbody>
   </table>
-  <a class="btn btn-default pull-right">글쓰기</a> <!-- // 글쓰기 html 로 이동 -->
+  <a href="posting/" class="btn btn-default pull-right " >글쓰기</a> <!-- // 글쓰기 html 로 이동 -->
 </div>
 
 {% endblock contents %}
-
