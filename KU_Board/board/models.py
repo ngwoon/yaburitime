@@ -7,7 +7,7 @@ class Post(models.Model):
     boardNum = models.IntegerField(primary_key=True)
     nickname = models.CharField(max_length=10)
     title = models.CharField(max_length=15)
-    content = models.CharField(max_length=100)
+    content = models.CharField(max_length=1000)
     recommend = models.IntegerField(default = 0)
     unrecommend = models.IntegerField(default = 0)
     date = models.DateTimeField('date published')

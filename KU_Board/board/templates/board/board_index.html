@@ -20,6 +20,7 @@
       <th>제목</th>
       <th>날짜</th>
       <th>조회수</th>
+      <th>추천수</th>
     </tr>
     </thead>
     <a>
@@ -27,16 +28,18 @@
     {% for board_posts in board_post %}
 
 
-    <tr style = "cursor:pointer;" onClick = " location.href=''"> <!--게시글로 이동-->
+    <tr style = "cursor:pointer;" onClick = " location.href=' {{ board_posts.boardNum }} '"> <!--게시글로 이동-->
 
       <td>{{board_posts.boardNum}}</td>
       <td>{{board_posts.nickname}}</td>
       <td>{{board_posts.title}}</td>
       <td>{{board_posts.date}}</td>
       <td>{{board_posts.Field}}</td>
+      <td>{{board_posts.recommend}}</td>
     </tr>
 
-    </a></div>
+    </a>
+</div>
 
     {% endfor %}
 

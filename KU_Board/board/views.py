@@ -35,7 +35,24 @@ def writingpost(request):
         form = Postform()
     return render(request, 'board/posting.html', {'form': form})
 
-    # post = Post()
-    # post.title = form.cleaned_data['title']
-    # post.content = form.cleaned_data['content']
-    # post.save()
+
+def postdetail(request,pk):
+    board_post = Post.objects.get(pk=pk)
+    context = {
+        'board_post': board_post,
+    }
+    return render(request, 'board/post_detail.html', context)
+
+def recommend(request,pk):
+   post = Post.objects.get(pk=pk)
+   post.recommend += 1
+   post.save()
+
+   return postdetail(request,pk)
+
+def unrecommend(request,pk):
+   post = Post.objects.get(pk=pk)
+   post.unrecommend += 1
+   post.save()
+
+   return postdetail(request,pk)
