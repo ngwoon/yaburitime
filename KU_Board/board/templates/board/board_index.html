@@ -59,42 +59,29 @@
 
 
         {% if prepage.has_previous %}
-        <td>{{prepage.previous_page_number}}</td>
+        <th class="tr_hover" onclick="location.href='?page={{prepage.previous_page_number}}'" style="cursor:pointer;" > {{prepage.previous_page_number}}</th>
         {% endif %}
 
         {% if pageposts.has_previous %}
-        <td>{{prepage.number}}</td>
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.previous_page_number}}'" style="cursor:pointer;">{{prepage.number}}</th>
         {% endif %}
 
-        <td bgcolor="#e3f2fd">{{pageposts.number}}</td>
+        <th bgcolor="#e3f2fd">{{pageposts.number}}</th>
 
         {% if pageposts.has_next %}
-        <td>{{nextpage.number}}</td>
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.next_page_number}}'" style="cursor:pointer;">{{nextpage.number}}</th>
         {% endif %}
 
         {% if nextpage.has_next %}
-        <td>{{nextpage.next_page_number}}</td>
+        <th class="tr_hover" onclick="location.href='?page={{nextpage.next_page_number}}'" style="cursor:pointer;">{{nextpage.next_page_number}}</th>
         {% endif %}
 
 
-<!--        {% if pageposts.has_next %}-->
-<!--        <td>{{prepage.number}}</td>-->
-<!--        <td>{{pageposts.number}}</td>-->
-<!--        <td>{{nextpage.number}}</td>-->
-<!--        {% endif %}-->
-
-<!--        <td>...</td>-->
-<!--        <td>{{pageposts.paginator.num_pages}}</td>-->
-
-
-
-<!--        <th><span>{{pageposts.number}}</span>-->
-<!--        <span>/</span>-->
-<!--        <span>{{pageposts.paginator.num_pages}}페이지중</span></th>-->
-
+        <th>...</th>
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.paginator.num_pages}}'" style="cursor:pointer;">{{nextpage.paginator.num_pages}}</th>
 
         {% if pageposts.has_next %}
-        <th class="tr_hover" onclick="location.href='?page={{pageposts.next_page_number}}'" style="cursor:pointer;" class="table-hover">></th>
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.next_page_number}}'" style="cursor:pointer;" >></th>
         <th class="tr_hover" onclick="location.href='?page={{pageposts.paginator.num_pages}}'" style="cursor:pointer;">>></th>
         {% else %}
         <th class="th_disabled">></th>
