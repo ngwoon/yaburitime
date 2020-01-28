@@ -9,23 +9,26 @@
       <p class="lead"></p>
     </div>
 
+  <div class="float-right">
+    <a href="posting/" class="btn btn-info" >글쓰기</a> <!-- // 글쓰기 html 로 이동 -->
+  </div>
+
   </div><!-- /.container -->
 
 <div class="container">
   <table class="table table-hover">
     <thead>
     <tr>
-      <th>번호</th>
-      <th>작성자</th>
-      <th>제목</th>
-      <th>날짜</th>
-      <th>조회수</th>
-      <th>추천수</th>
+      <th style="width: 70px; ">글번호</th>
+      <th style="width: 100px;">작성자</th>
+      <th style="width: 500px;">제목</th>
+      <th style="width: 200px;">날짜</th>
+      <th style="width: 80px;">조회수</th>
+      <th style="width: 80px;">추천수</th>
     </tr>
     </thead>
-    <a>
 
-    {% for board_posts in board_post %}
+    {% for board_posts in pageposts %}
 
 
     <tr style = "cursor:pointer;" onClick = " location.href=' {{ board_posts.boardNum }} '"> <!--게시글로 이동-->
@@ -38,15 +41,69 @@
       <td>{{board_posts.recommend}}</td>
     </tr>
 
-    </a>
-</div>
-
     {% endfor %}
 
-
-    </tbody>
   </table>
-  <a href="posting/" class="btn btn-default pull-right " >글쓰기</a> <!-- // 글쓰기 html 로 이동 -->
+
+<!--pagination-->
+  <div style="padding-right: 400px; padding-left: 400px;" class="text-center">
+    <table class="table table-bordered table-sm">
+      <tr>
+        {% if pageposts.has_previous %}
+        <th class="tr_hover" onclick="location.href='?page=1'" style="cursor:pointer;"><<</th>
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.previous_page_number}}'" style="cursor:pointer;"><</th>
+        {% else %}
+        <th class="th_disabled"><<</th>
+        <th class="th_disabled"><</th>
+        {% endif %}
+
+
+        {% if prepage.has_previous %}
+        <td>{{prepage.previous_page_number}}</td>
+        {% endif %}
+
+        {% if pageposts.has_previous %}
+        <td>{{prepage.number}}</td>
+        {% endif %}
+
+        <td bgcolor="#e3f2fd">{{pageposts.number}}</td>
+
+        {% if pageposts.has_next %}
+        <td>{{nextpage.number}}</td>
+        {% endif %}
+
+        {% if nextpage.has_next %}
+        <td>{{nextpage.next_page_number}}</td>
+        {% endif %}
+
+
+<!--        {% if pageposts.has_next %}-->
+<!--        <td>{{prepage.number}}</td>-->
+<!--        <td>{{pageposts.number}}</td>-->
+<!--        <td>{{nextpage.number}}</td>-->
+<!--        {% endif %}-->
+
+<!--        <td>...</td>-->
+<!--        <td>{{pageposts.paginator.num_pages}}</td>-->
+
+
+
+<!--        <th><span>{{pageposts.number}}</span>-->
+<!--        <span>/</span>-->
+<!--        <span>{{pageposts.paginator.num_pages}}페이지중</span></th>-->
+
+
+        {% if pageposts.has_next %}
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.next_page_number}}'" style="cursor:pointer;" class="table-hover">></th>
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.paginator.num_pages}}'" style="cursor:pointer;">>></th>
+        {% else %}
+        <th class="th_disabled">></th>
+        <th class="th_disabled">>></th>
+        {% endif %}
+      </tr>
+    </table>
+  </div>
+
 </div>
 
 {% endblock contents %}

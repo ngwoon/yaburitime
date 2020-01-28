@@ -33,67 +33,121 @@
 
   <body>
 
-<!--    <nav class="navbar navbar-expand-sm bg-info navbar-dark ">-->
-<!--      <ul class="navbar-nav">-->
-<!--        <li class="nav-item active">-->
-<!--          <a class="navbar-brand" href="#">KU-Board</a>-->
-<!--        </li>-->
-
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="#">Board</a>-->
-<!--        </li>-->
-
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="#">chat</a>-->
-<!--        </li>-->
-
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" href="#"></a>-->
-<!--        </li>-->
-<!--      </ul>-->
-
-<!--    </nav>-->
-
-<nav class="navbar navbar-default bg-success">
-  <div class="container-fluid">
-  <!-- 메뉴에서 가장 왼쪽, 모바일에서 표시되는 제목 -->
-    <div class="navbar-header">
-    <!-- 메뉴의 홈페이지 이름 -->
-    <a class="navbar-brand" href="/">KU_Board</a>
-    </div>
-  <!-- 메뉴의 리스트 -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-      <!-- Link 메뉴 (class가 active가 포함되어 있기 때문에 선택된 메뉴 뜻) -->
-        <li><a href="/board">board</a></li>
-        <!-- Link 메뉴 -->
-        <li><a href="/chat">chat</a></li>
-
-      </ul>
-
-        <!-- 오른쪽 정렬의 메뉴 -->
-      <ul class="nav navbar-nav navbar-right">
-      <!-- Link 메뉴 -->
-
-      <!-- DropDown 형식의 메뉴 -->
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">로그인 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">One more separated link</a></li>
-          </ul>
+    <nav class="navbar navbar-expand-sm bg-info navbar-dark ">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="navbar-brand large" href="#">KU-Board</a>
         </li>
 
-        <li><a href="#">회원가입</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="/board">Board</a>
+        </li>
 
-    </div>
-  </div>
-</nav>
+        <li class="nav-item">
+          <a class="nav-link" href="#">chat</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link"  href="#">로그인</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="#">회원가입</a>
+       </li>
+      </ul>
+
+
+    </nav>
+
+
+
+
+<!--<nav class="navbar navbar-default">-->
+<!--  <div class="container-fluid">-->
+<!--  &lt;!&ndash; 메뉴에서 가장 왼쪽, 모바일에서 표시되는 제목 &ndash;&gt;-->
+<!--    <div class="navbar-header">-->
+<!--    &lt;!&ndash; 메뉴의 홈페이지 이름 &ndash;&gt;-->
+<!--    <a class="navbar-brand" href="/">KU_Board</a>-->
+<!--    </div>-->
+<!--  &lt;!&ndash; 메뉴의 리스트 &ndash;&gt;-->
+<!--    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+<!--      <ul class="navbar-nav mr-auto">-->
+<!--      &lt;!&ndash; Link 메뉴 (class가 active가 포함되어 있기 때문에 선택된 메뉴 뜻) &ndash;&gt;-->
+
+<!--        <li><a href="/board">board</a></li>-->
+<!--        &lt;!&ndash; Link 메뉴 &ndash;&gt;-->
+<!--        <li><a href="/chat">chat</a></li>-->
+
+<!--      </ul>-->
+
+<!--        &lt;!&ndash; 오른쪽 정렬의 메뉴 &ndash;&gt;-->
+<!--      <ul class="nav navbar-nav navbar-right">-->
+<!--      &lt;!&ndash; Link 메뉴 &ndash;&gt;-->
+
+<!--      &lt;!&ndash; DropDown 형식의 메뉴 &ndash;&gt;-->
+<!--        <li class="dropdown">-->
+<!--        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">로그인 <span class="caret"></span></a>-->
+<!--          <ul class="dropdown-menu">-->
+<!--          <li><a href="#">Action</a></li>-->
+<!--          <li><a href="#">Another action</a></li>-->
+<!--          <li><a href="#">Something else here</a></li>-->
+<!--          <li role="separator" class="divider"></li>-->
+<!--          <li><a href="#">Separated link</a></li>-->
+<!--          <li role="separator" class="divider"></li>-->
+<!--          <li><a href="#">One more separated link</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+
+<!--        <li><a href="#">회원가입</a></li>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
+
+
+
+
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-primary">-->
+<!--  <a class="navbar-brand" href="/">KU_board</a>-->
+<!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--    <span class="navbar-toggler-icon"></span>-->
+<!--  </button>-->
+
+<!--  <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--    <ul class="navbar-nav mr-auto">-->
+<!--      <li class="nav-item active">-->
+<!--        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" href="#">Link</a>-->
+<!--      </li>-->
+<!--      <li class="nav-item dropdown">-->
+<!--        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          Dropdown-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--          <a class="dropdown-item" href="#">Action</a>-->
+<!--          <a class="dropdown-item" href="#">Another action</a>-->
+<!--          <div class="dropdown-divider"></div>-->
+<!--          <a class="dropdown-item" href="#">Something else here</a>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--    <form class="form-inline my-2 my-lg-0">-->
+<!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</nav>-->
 
     {% block contents %}
 

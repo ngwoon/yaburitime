@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-1" style="float:left; margin-right:40px;">{{board_post.nickname}}</div>
         <div class="col-md-4" style="float:left; margin-right:100px;">{{board_post.date}}</div>
-        <div class="col-md-2" style="float:right;">조회수: {{board_post.Field}}회</div>
+        <div class="col-md-2 float-right">조회수: {{board_post.Field}}회</div>
     </div>
 
     <hr>
@@ -26,21 +26,21 @@
     <div class="row">
 
 
-        <div class="col-md-1" style="float:left;">추천: {{board_post.recommend}} </div>
+        <div class="" style="float:left; margin-top:5px;"><h5>추천: {{board_post.recommend}} </h5></div>
         <form action = "/board/{{board_post.boardNum}}/recommend" method="POST">
             {% csrf_token %}
-            <button name="rec" class="btn btn-default btn-xs" style="float:left; margin-right:50px" value="{{board_post.boardNum}}" onclick="alert('추천!')">추천하기</button>
+            <button name="rec" class="btn btn-info btn-xs" style="float:left; margin-left:20px; margin-right:50px " value="{{board_post.boardNum}}" onclick="alert('추천!')">추천하기</button>
         </form>
 
-        <div class="col-md-1" style="float:left;">비추천: {{board_post.unrecommend}}</div>
+        <div class="" style="float:left;margin-top:5px;"><h5>비추천: {{board_post.unrecommend}}</h5></div>
 
         <form action = "/board/{{board_post.boardNum}}/unrecommend" method="POST">
             {% csrf_token %}
-            <button name="unrec" class="btn btn-default btn-xs" style="float:left; margin-right:50px" value="{{board_post.boardNum}}" onclick="alert('비추천!')"> 비추천하기</button>
+            <button name="unrec" class="btn btn-info btn-xs" style="float:left; margin-left:20px; margin-right:50px" value="{{board_post.boardNum}}" onclick="alert('비추천!')"> 비추천하기</button>
         </form>
     </div>
 
-    <button class="btn btn-default pull-right" onclick = "location.href = '/board'">목록으로</button>
+    <button class="btn btn-info float-right" onclick = "location.href = '/board'">목록으로</button>
 </div>
 
 

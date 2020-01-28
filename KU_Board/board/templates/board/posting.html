@@ -2,22 +2,12 @@
 
 {% block contents %}
 
-{% if messages %}
-<ul class="messages">
-    <div class = "alert alert-warning alert-dismissible fade in" role="alert">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %} > {{ message }} </li>
-        {% endfor %}
-    </div>
-</ul>
-{% endif %}
 
 <div class="container">
-
+    <br>
+    <h2 class="text-center">글작성</h2>
     <table class="table table-bordered">
-        <thead>
-            <caption> 글쓰기 </caption>
-        </thead>
+    <br>
 
         <tbody>
             <form method="POST" class="post-form">
@@ -36,13 +26,22 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <button type="submit" class="save btn btn-default pull-right">글쓰기</button>
-                        <button type="button" onclick= "location.href='/board/'" class="save btn btn-default">목록으로</button>
+                        <button type="button" onclick= "location.href='/board/'" class="save btn btn-light float-right">목록으로</button>
+                        <button type="submit" class="save btn btn-light float-right" style="margin-right:10px">작성</button>
                     </td>
                 </tr>
             </form>
         </tbody>
     </table>
+
+    {% if messages %}
+    {% for message in messages %}
+
+        <div class="alert alert-danger alert-dismissible">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
 </div>
 
 <br><br><br><br>

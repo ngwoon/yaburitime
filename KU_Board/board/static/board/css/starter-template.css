@@ -5,3 +5,11 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+
+.tr_hover:hover {
+    background-color:#04B4AE;
+}
+
+.th_disabled {
+    color:gray;
+}
