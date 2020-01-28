@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+  <div class="container">
+
+    <div class="starter-template">
+      <h1>Board</h1>
+      <p class="lead"></p>
+    </div>
+
+  <div class="float-right">
+    <a href="posting/" class="btn btn-info" >글쓰기</a> <!-- // 글쓰기 html 로 이동 -->
+  </div>
+
+  </div><!-- /.container -->
+
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th style="width: 70px; ">글번호</th>
+      <th style="width: 100px;">작성자</th>
+      <th style="width: 500px;">제목</th>
+      <th style="width: 200px;">날짜</th>
+      <th style="width: 80px;">조회수</th>
+      <th style="width: 80px;">추천수</th>
+    </tr>
+    </thead>
+
+    {% for board_posts in pageposts %}
+
+
+    <tr style = "cursor:pointer;" onClick = " location.href=' {{ board_posts.boardNum }} '"> <!--게시글로 이동-->
+
+      <td>{{board_posts.boardNum}}</td>
+      <td>{{board_posts.nickname}}</td>
+      <td>{{board_posts.title}}</td>
+      <td>{{board_posts.date}}</td>
+      <td>{{board_posts.Field}}</td>
+      <td>{{board_posts.recommend}}</td>
+    </tr>
+
+    {% endfor %}
+
+  </table>
+
+<!--pagination-->
+  <div style="padding-right: 400px; padding-left: 400px;" class="text-center">
+    <table class="table table-bordered table-sm">
+      <tr>
+        {% if pageposts.has_previous %}
+        <th class="tr_hover" onclick="location.href='?page=1'" style="cursor:pointer;"><<</th>
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.previous_page_number}}'" style="cursor:pointer;"><</th>
+        {% else %}
+        <th class="th_disabled"><<</th>
+        <th class="th_disabled"><</th>
+        {% endif %}
+
+
+        {% if prepage.has_previous %}
+        <th class="tr_hover" onclick="location.href='?page={{prepage.previous_page_number}}'" style="cursor:pointer;" > {{prepage.previous_page_number}}</th>
+        {% endif %}
+
+        {% if pageposts.has_previous %}
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.previous_page_number}}'" style="cursor:pointer;">{{prepage.number}}</th>
+        {% endif %}
+
+        <th bgcolor="#e3f2fd">{{pageposts.number}}</th>
+
+        {% if pageposts.has_next %}
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.next_page_number}}'" style="cursor:pointer;">{{nextpage.number}}</th>
+        {% endif %}
+
+        {% if nextpage.has_next %}
+        <th class="tr_hover" onclick="location.href='?page={{nextpage.next_page_number}}'" style="cursor:pointer;">{{nextpage.next_page_number}}</th>
+        {% endif %}
+
+
+        <th>...</th>
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.paginator.num_pages}}'" style="cursor:pointer;">{{nextpage.paginator.num_pages}}</th>
+
+        {% if pageposts.has_next %}
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.next_page_number}}'" style="cursor:pointer;" >></th>
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.paginator.num_pages}}'" style="cursor:pointer;">>></th>
+        {% else %}
+        <th class="th_disabled">></th>
+        <th class="th_disabled">>></th>
+        {% endif %}
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+{% endblock contents %}
