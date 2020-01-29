@@ -20,7 +20,7 @@ def board(request):
     pageposts = paginator.get_page(page)
     prepage = paginator.get_page(page)
     nextpage = paginator.get_page(page)
-    is_lastpage = False
+    is_lastpage_hide = False
 
     if pageposts.number > 1:
         prepage = paginator.page(pageposts.number-1)
@@ -28,14 +28,14 @@ def board(request):
         nextpage =paginator.page(pageposts.number+1)
 
     if pageposts.number+2 >= pageposts.paginator.num_pages:
-            is_lastpage = True
+            is_lastpage_hide = True
 
     context = {
         'board_post':board_post,
         'pageposts':pageposts,
         'prepage':prepage,
         'nextpage':nextpage,
-        'is_lastpage':is_lastpage,
+        'is_lastpage_hide':is_lastpage_hide,
     }
     return render(request, 'board/board_index.html', context)
 
