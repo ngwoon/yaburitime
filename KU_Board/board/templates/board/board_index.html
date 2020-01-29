@@ -76,9 +76,11 @@
         <th class="tr_hover" onclick="location.href='?page={{nextpage.next_page_number}}'" style="cursor:pointer;">{{nextpage.next_page_number}}</th>
         {% endif %}
 
-
+        {% if is_lastpage_hide %}
+        {% else %}
         <th>...</th>
-        <th class="tr_hover" onclick="location.href='?page={{pageposts.paginator.num_pages}}'" style="cursor:pointer;">{{nextpage.paginator.num_pages}}</th>
+        <th class="tr_hover" onclick="location.href='?page={{pageposts.paginator.num_pages}}'" style="cursor:pointer;">{{pageposts.paginator.num_pages}}</th>
+        {% endif %}
 
         {% if pageposts.has_next %}
         <th class="tr_hover" onclick="location.href='?page={{pageposts.next_page_number}}'" style="cursor:pointer;" >></th>
