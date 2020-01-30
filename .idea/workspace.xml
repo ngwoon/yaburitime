@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff5829cd-7759-421c-bda0-7d1848e32247" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/KU_Board/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KU_Board/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +43,7 @@
       <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board\join" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sys09\PycharmProjects\KU_Board" />
       <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board" />
       <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board\board\templates\board" />
     </key>
