@@ -4,16 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Yaburitime</title>
+    <title>야부리타임</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 </head>
 <body>
 
-<h1>야부리타임</h1>
 
-<div class="container-fluid full-width" style="background:pink">
-    <dlv class="content">
-        <div class="row-fluid">
+<div class="container-fluid">
+    <div class="card-title" align="middle">
+        <h1>야부리타임</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
             <div class="span2">
                 여기에는 홈페이지 소개 내용이 들어갈 것 <br>
                 크기를 잡을 텍스트<br>
@@ -29,15 +32,14 @@
             </div>
         </div>
 
-        <div class="row-fluid">
-            <div class="span10">
-                <button type="button" class="btn btn-primary btn-lg"
-                        onclick= "location.href='join/signin/'" class="save btn btn-light">로그인</button><br>
-                <button type="button" class="btn btn-primary btn-lg"
-                        onclick= "location.href='join/signup/'" class="save btn btn-light">회원가입</button>
-            </div>
+        <div class="col-md-4" align="middle">
+            <button type="button" class="btn btn-info btn-lg btn-block"
+                    onclick= "location.href='join/signin/'" class="save btn btn-light">로그인</button><br>
+            <button type="button" class="btn btn-info btn-lg btn-block"
+                    onclick= "location.href='join/signup/'" class="save btn btn-light">야부리타임 회원가입</button>
         </div>
-    </dlv>
+    </div>
+
 </div>
 
 
