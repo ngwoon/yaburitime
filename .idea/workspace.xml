@@ -4,11 +4,15 @@
     <list default="true" id="ff5829cd-7759-421c-bda0-7d1848e32247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/KU_Board/board/templates/board/board_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/board/templates/board/board_post.html" afterDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/KU_Board/board/templates/board/board_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/board/templates/board/board_index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KU_Board/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/templates/base.html" afterDir="false" />
 >>>>>>> 39d80155c20af291cb893a3a1c92893bc29db634
+=======
+      <change beforePath="$PROJECT_DIR$/KU_Board/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+>>>>>>> 3ed07f5b6ad1ec7db8cab454454e18f28aff2928
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +52,7 @@
       <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board\join" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sys09\PycharmProjects\KU_Board" />
       <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board" />
       <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board\board\templates\board" />
     </key>

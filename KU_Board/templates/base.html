@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>야부리타임</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
 </head>
 
 <body>
@@ -18,15 +19,18 @@
 
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active dropdown">
-        <a class="nav-link dropdown-toggle" href="/board" data-toggle="dropdown">게시판</a>
-      </li>
-      <div class="dropdown-menu">
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="/board/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            게시판
+        </a>
+
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/board/free">자유게시판</a>
           <a class="dropdown-item" href="/board/secret">비밀게시판</a>
           <a class="dropdown-item" href="/board/recent">최근게시판</a>
           <a class="dropdown-item" href="/board/hot">인기게시판</a>
       </div>
+      </li>
       <li class="nav-item active">
         <a class="nav-link disabled" href="/timetable">시간표</a>
       </li>
@@ -58,10 +62,11 @@
             © 2020 Yoonseop Shin, Gwanwoo Nam, Yoojun Jang.
         </div>
     </div>
-
 </div>
 
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 </html>
