@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Yaburitime</title>
-    {% load static %} <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 </head>
 <body>
 
 <h1>야부리타임</h1>
-    <div id="login"> <br>
-        <button type="button" onclick= "location.href='join/signin/'" class="save btn btn-light float-right">로그인</button><br>
-    </div>
 
-    <div id="signup">
-        <button type="button" onclick= "location.href='join/signup/'" class="save btn btn-light float-right">회원가입</button>
-    </div>
+<div class="container-fluid full-width" style="background:pink">
+    <dlv class="content">
+        <div class="row-fluid">
+            <div class="span2">
+                여기에는 홈페이지 소개 내용이 들어갈 것 <br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span10">
+                <button type="button" class="btn btn-primary btn-lg"
+                        onclick= "location.href='join/signin/'" class="save btn btn-light">로그인</button><br>
+                <button type="button" class="btn btn-primary btn-lg"
+                        onclick= "location.href='join/signup/'" class="save btn btn-light">회원가입</button>
+            </div>
+        </div>
+    </dlv>
+</div>
+
+
 
 </body>
 </html>
