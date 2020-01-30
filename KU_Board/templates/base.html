@@ -54,7 +54,8 @@
 
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link"  href="#">로그인</a>
+          {{ user.username }}
+          {% if user.username %}<a class="nav-link" href="/join/signOut">로그아웃{% else %}<a href="/join/">로그인{% endif %}</a>
         </li>
 
         <li class="nav-item active">

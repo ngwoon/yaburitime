@@ -46,7 +46,7 @@ def writingpost(request):
 
         if form.is_valid():
             post = form.save(commit=False)
-            post.nickname = '장유준'
+            post.nickname = request.session['id']
             post.date = datetime.now()
             post.save()
             return redirect('/board/', pk=post.pk)
