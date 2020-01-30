@@ -27,13 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
     'board.apps.BoardConfig',
     'join.apps.JoinConfig',
-    'chat.apps.ChatConfig',
+    'mypage.apps.MypageConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

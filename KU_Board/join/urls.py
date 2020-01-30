@@ -19,7 +19,7 @@ from . import views
 
 app_name = 'join'
 urlpatterns = [
-    path('', views.SignIn.as_view(), name='login'),
-    path('signOut/', views.signOut, name='signout'),
-    path('signUp/', views.SignUp.as_view(), name='signup'),
+    path('signin/', views.SignIn.as_view(), name='signin'),
+    path('signout/', views.signOut, name='signout'),
+    path('signup/', views.SignUp.as_view(), name='signup'),
 ]

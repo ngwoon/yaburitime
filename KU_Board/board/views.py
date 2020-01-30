@@ -10,7 +10,6 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 
 
-
 def board(request):
     board_post = Post.objects.all().order_by('-boardNum')
 
@@ -54,7 +53,7 @@ def writingpost(request):
             messages.error(request, '제목 또는 내용이 입력되지 않았습니다.')
     else:
         form = Postform()
-    return render(request, 'board/posting.html', {'form': form})
+    return render(request, 'board/board_post.html', {'form': form})
 
 
 def postdetail(request,pk):
@@ -63,7 +62,7 @@ def postdetail(request,pk):
         'board_post': board_post,
     }
     board_post.count_up()
-    return render(request, 'board/post_detail.html', context)
+    return render(request, 'board/board_detail.html', context)
 
 def recommend(request,pk):
    post = Post.objects.get(pk=pk)
