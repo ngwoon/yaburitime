@@ -10,8 +10,18 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 
 
-def board(request):
-    board_post = Post.objects.all().order_by('-boardNum')
+def board(request,whatboard):
+
+
+    if whatboard == 'free':
+        board_post = Post.objects.filter(category=1).order_by('-boardNum')
+        changedwhatboard='자유게시판'
+
+    elif whatboard == 'secret':
+        board_post = Post.objects.filter(category=2).order_by('-boardNum')
+        changedwhatboard='비밀게시판'
+    else:
+        return redirect('/board/free/')
 
     posts_of_page = 5 # 한 페이지당 나타낼 글의 개수
     paginator = Paginator(board_post, posts_of_page)
@@ -29,12 +39,15 @@ def board(request):
     if pageposts.number+2 >= pageposts.paginator.num_pages:
             is_lastpage_hide = True
 
+    now = datetime.now()
     context = {
         'board_post':board_post,
         'pageposts':pageposts,
         'prepage':prepage,
         'nextpage':nextpage,
         'is_lastpage_hide':is_lastpage_hide,
+        'changedwhatboard':changedwhatboard,
+        'now':now
     }
     return render(request, 'board/board_index.html', context)
 

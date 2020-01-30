@@ -2,29 +2,26 @@
 
 {% block content %}
 
-  <div class="container-fluid">
 
-    <div class="starter-template">
-      <h1>게시판</h1>
+
+  <div class="container-fluid" style="margin-top:70px; margin-bottom:70px;">
+
+    <div class="starter-template text-center">
+      <h3>{{ changedwhatboard }}</h3>
       <p class="lead"></p>
     </div>
-
+  </div><!-- /.container -->
   <div class="float-right">
-    <a href="posting/" class="btn btn-info" >글쓰기</a> <!-- // 글쓰기 html 로 이동 -->
+    <a href="posting/" class="btn btn-info" style="margin-bottom:10px;" >글쓰기</a> <!-- // 글쓰기 url 로 이동 -->
   </div>
 
-  </div><!-- /.container -->
+
 
 <div class="container">
   <table class="table table-hover">
     <thead>
     <tr>
-      <th style="width: 70px; ">글번호</th>
-      <th style="width: 100px;">작성자</th>
-      <th style="width: 500px;">제목</th>
-      <th style="width: 200px;">날짜</th>
-      <th style="width: 80px;">조회수</th>
-      <th style="width: 80px;">추천수</th>
+      <th>{{ changedwhatboard }}</th>
     </tr>
     </thead>
 
@@ -33,12 +30,14 @@
 
     <tr style = "cursor:pointer;" onClick = " location.href=' {{ board_posts.boardNum }} '"> <!--게시글로 이동-->
 
-      <td>{{board_posts.boardNum}}</td>
-      <td>{{board_posts.nickname}}</td>
-      <td>{{board_posts.title}}</td>
-      <td>{{board_posts.date}}</td>
-      <td>{{board_posts.Field}}</td>
-      <td>{{board_posts.recommend}}</td>
+      <td>
+        <strong>{{board_posts.title}}</strong>
+        <div class="small" style="color:gray">{{board_posts.content}}</div>
+        <span class="small" style="color:dark">{{board_posts.nickname}}</span>
+        <span class="small" style="color:gray">{{ board_posts.date|timesince }}전</span>
+        <span class="float-right">&nbsp{{board_posts.recommend}}</span>
+        <i class="far fa-thumbs-up float-right" style="color:blue; margin-top:3px;"></i>
+      </td>
     </tr>
 
     {% endfor %}

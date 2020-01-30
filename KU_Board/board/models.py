@@ -10,9 +10,9 @@ class Post(models.Model):
     content = models.CharField(max_length=1000)
     recommend = models.IntegerField(default = 0)
     unrecommend = models.IntegerField(default = 0)
-    date = models.DateTimeField('date published')
-    category = models.CharField(max_length=10)
-    Field = models.IntegerField(default = 0)
+    date = models.DateTimeField(auto_now_add=True)
+    category = models.IntegerField(default=0) # 1-> 자유게시판, 2->비밀게시판
+    Field = models.IntegerField(default=0) # 조회수
 
     def count_up(self):
         self.Field += 1
