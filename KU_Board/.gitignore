@@ -1,0 +1,10 @@
+venv/
+.idea/
+db.sqlite3
+<KU_Board>/settings.py
+
+*.log
+*.pot
+*.pyc
+*.pyc
+__pycache__/
