@@ -2,54 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff5829cd-7759-421c-bda0-7d1848e32247" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/KU_Board/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/KU_Board/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/KU_Board/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/KU_Board/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/KU_Board/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap-grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap-grid.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap-grid.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap-grid.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap-grid.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap-reboot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap-reboot.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap-reboot.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/bootstrap.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/bootstrap.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/css/starter-template.css" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/css/starter-template.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/fonts/glyphicons-halflings-regular.eot" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/fonts/glyphicons-halflings-regular.woff" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/js/bootstrap.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/js/bootstrap.bundle.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/js/bootstrap.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/js/bootstrap.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/static/board/js/bootstrap.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/static/board/js/bootstrap.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/templates/board/board_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/board/templates/board/board_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/templates/board/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/board/templates/board/board_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/templates/board/posting.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/board/templates/board/board_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/board/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/board/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/board/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/chat/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/KU_Board/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/chat/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/chat/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/chat/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/mypage/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/chat/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/chat/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/chat/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/join/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/join/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/join/templates/join/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/join/templates/join/signin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/join/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/join/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/join/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/join/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KU_Board/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KU_Board/board/templates/board/board_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/board/templates/board/board_post.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +54,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5ff5be61-3e42-400a-a0ef-7baa5bda83ae" name="Default Changelist" comment="" />
+      <changelist id="ff5829cd-7759-421c-bda0-7d1848e32247" name="Default Changelist" comment="" />
       <created>1580360250100</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
