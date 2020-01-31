@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 
+
 # Create your models here.
 
 class Post(models.Model):
@@ -8,11 +9,11 @@ class Post(models.Model):
     nickname = models.CharField(max_length=10)
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=1000)
-    recommend = models.IntegerField(default = 0)
-    unrecommend = models.IntegerField(default = 0)
+    recommend = models.IntegerField(default=0)
+    unrecommend = models.IntegerField(default=0)
     date = models.DateTimeField(auto_now_add=True)
-    category = models.IntegerField(default=0) # 1-> 자유게시판, 2->비밀게시판
-    Field = models.IntegerField(default=0) # 조회수
+    category = models.IntegerField(default=0)  # 1-> 자유게시판, 2->비밀게시판
+    Field = models.IntegerField(default=0)  # 조회수
 
     def count_up(self):
         self.Field += 1
@@ -22,4 +23,9 @@ class Post(models.Model):
         return self.title
 
 
-
+class Comment(models.Model):
+    commentnum = models.IntegerField(primary_key=True)
+    whatpost = models.IntegerField()
+    nickname = models.CharField(max_length=10)
+    content = models.CharField(max_length=300)
+    date = models.DateTimeField(auto_now_add=True)

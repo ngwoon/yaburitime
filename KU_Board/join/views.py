@@ -6,6 +6,7 @@ from .forms import SignUpForm
 from django.contrib.auth import login, authenticate, logout
 # Create your views here.
 
+
 class SignIn(View):
     def get(self, request):
         return render(request, 'join/signin.html')
@@ -16,7 +17,8 @@ class SignIn(View):
 
         if u:
             login(request, user=u)
-            return redirect('board')
+            request.session['id'] = request.POST['id']
+            return redirect('/board/free/')
 
         return render(request, 'join/signin.html')
 
