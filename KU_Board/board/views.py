@@ -3,8 +3,8 @@ from django.shortcuts import redirect
 from django.template import loader
 # Create your views here.
 from datetime import datetime
-from .models import Post,Comment
-from .forms import Postform,Commentform
+from .models import Post, Comment
+from .forms import Postform, Commentform
 from django.contrib import messages
 
 from django.core.paginator import Paginator
@@ -57,14 +57,12 @@ def board(request, whatboard):
 
 
 def writingpost(request, whatboard):
-
     if whatboard == 'free':
         category = 1
         changedwhatboard = '자유게시판'
     elif whatboard == 'secret':
         category = 2
         changedwhatboard = '비밀게시판'
-
 
     if request.method == "POST":
 
@@ -94,7 +92,6 @@ def writingpost(request, whatboard):
 
 
 def postdetail(request, whatboard, pk):
-
     if whatboard == 'free':
         categorykr = '자유게시판'
         categoryNum = 1
@@ -115,11 +112,10 @@ def postdetail(request, whatboard, pk):
         else:
             messages.error(request, '내용을 입력해주세요')
     else:
-        form = Postform()
+        form = Commentform()
 
     board_post = Post.objects.get(pk=pk)
     comment = Comment.objects.filter(whatpost=board_post).order_by('id')
-
 
     context = {
         'form': form,
@@ -137,9 +133,10 @@ def postdetail(request, whatboard, pk):
 def recommend(request, whatboard, pk):
     post = Post.objects.get(pk=pk)
     post.recommend += 1
-    post.Field -= 1
+    post.Field -= 1  # 조회수 감소
     post.save()
-    return postdetail(request, whatboard, pk)
+    return redirect('/board/{}/{}'.format(whatboard, pk))
+    # return postdetail(request, whatboard, pk)
 
 
 def unrecommend(request, whatboard, pk):
@@ -148,5 +145,4 @@ def unrecommend(request, whatboard, pk):
     post.Field -= 1
     post.save()
 
-    return postdetail(request, whatboard, pk)
-
+    return redirect('/board/{}/{}'.format(whatboard, pk))

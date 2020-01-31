@@ -15,7 +15,7 @@ class Post(models.Model):
     category = models.IntegerField(default=0)  # 1-> 자유게시판, 2->비밀게시판
     Field = models.IntegerField(default=0)  # 조회수
 
-    def count_up(self):
+    def count_up(self):  #조회수 증가방식 바꿀필요 있음
         self.Field += 1
         self.save()
 
@@ -24,7 +24,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    content = models.CharField(max_length=300)
     whatpost = models.ForeignKey('Post', on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    content = models.CharField(max_length=300)
     date = models.DateTimeField(auto_now_add=True)
