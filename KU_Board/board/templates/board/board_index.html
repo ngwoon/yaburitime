@@ -7,12 +7,12 @@
   <div class="container-fluid" style="margin-top:70px; margin-bottom:70px;">
 
     <div class="starter-template text-center">
-      <h3>{{ changedwhatboard }}</h3>
+      <h3>{{ categorykr }}</h3>
       <p class="lead"></p>
     </div>
   </div><!-- /.container -->
   <div class="float-right">
-    <a href="posting/" class="btn btn-info" style="margin-bottom:10px;" >글쓰기</a> <!-- // 글쓰기 url 로 이동 -->
+    <a href="posting/" class="btn btn-outline-info " style="margin-bottom:10px;" >글쓰기</a> <!-- // 글쓰기 url 로 이동 -->
   </div>
 
 
@@ -21,7 +21,7 @@
   <table class="table table-hover">
     <thead>
     <tr>
-      <th>{{ changedwhatboard }}</th>
+      <th>{{ categorykr }}</th>
     </tr>
     </thead>
 
@@ -32,11 +32,19 @@
 
       <td>
         <strong>{{board_posts.title}}</strong>
-        <div class="small" style="color:gray">{{board_posts.content}}</div>
+        <div class="small" style="color:gray; margin: 5px 0px 0px 20px; width: 600px; max-height: 60px; overflow: hidden;text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; word-wrap:break-word;">
+          <p>{{board_posts.content}}</p>
+
+        </div>
+
+        {% if categoryNum != 2 %}
         <span class="small" style="color:dark">{{board_posts.nickname}}</span>
-        <span class="small" style="color:gray">{{ board_posts.date|timesince }}전</span>
+        {% else %}
+        <span class="small" style="color:dark">익명  </span>
+        {% endif %}
+        <span class="small" style="color:gray">&nbsp;{{ board_posts.date|timesince }}전</span>
         <span class="float-right">&nbsp{{board_posts.recommend}}</span>
-        <i class="far fa-thumbs-up float-right" style="color:blue; margin-top:3px;"></i>
+        <i class="far fa-thumbs-up float-right" style="margin-top:3px;"></i>
       </td>
     </tr>
 
@@ -45,6 +53,7 @@
   </table>
 
 <!--pagination-->
+
   <div style="padding-right: 400px; padding-left: 400px;" class="text-center">
     <table class="table table-bordered table-sm">
       <tr>

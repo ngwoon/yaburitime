@@ -3,12 +3,12 @@ from . import views
 
 app_name = 'board'
 urlpatterns = [
-    path('<str:whatboard>/', views.board, name='freeboard'),
+    path('<str:whatboard>/', views.board, name='board'),
 
-    path('free/posting/', views.writingpost, name='writingfreepost'),
-    path('secret/posting/', views.writingpost, name='writingsecretpost'),
+    path('<str:whatboard>/posting/', views.writingpost, name='writingpost'),
 
-    path('free/<int:pk>', views.postdetail, name='postdetail'),
-    path('free/<int:pk>/recommend', views.recommend, name='recommend'),
-    path('free/<int:pk>/unrecommend', views.unrecommend, name='unrecommend'),
+    path('<str:whatboard>/<int:pk>', views.postdetail, name='postdetail'),
+
+    path('<str:whatboard>/<int:pk>/recommend', views.recommend, name='recommend'),
+    path('<str:whatboard>/<int:pk>/unrecommend', views.unrecommend, name='unrecommend'),
 ]

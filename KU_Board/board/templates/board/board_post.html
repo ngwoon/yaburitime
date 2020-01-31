@@ -1,33 +1,29 @@
 {% extends "base.html" %}
 
-{% block contents %}
+{% block content %}
 
-
-<div class="container">
+<div class="container-fluid">
     <br>
-    <h2 class="text-center">글작성</h2>
-    <table class="table table-bordered">
+    <h2 class="text-center">{{changedwhatboard}}</h2>
+
+    <table class="table">
     <br>
 
         <tbody>
             <form method="POST" class="post-form">
                 {% csrf_token %}
                 <tr>
-                    <th>제목 </th>
-                    <td><input type="text" placeholder="제목을 입력하세요. " name="title" class="form-control"/></td>
+                    <td><input type="text" placeholder="제목" name="title" class="form-control" style="border:0"/></td>
                 </tr>
                 <tr>
-                    <th>내용 </th>
-                    <td><textarea cols="70" rows="10" placeholder="내용을 입력하세요. " name="content" class="form-control"></textarea></td>
+                    <td><textarea cols="70" rows="10" placeholder="내용" name="content" class="form-control" style="border:0"></textarea></td>
+
                 </tr>
-                <tr>
-                    <th>첨부파일 </th>
-                    <td><input type="text" placeholder="파일을 선택하세요. " name="filename" class="form-control"/></td>
-                </tr>
+
                 <tr>
                     <td colspan="2">
-                        <button type="button" onclick= "location.href='/board/'" class="save btn btn-light float-right">목록으로</button>
-                        <button type="submit" class="save btn btn-light float-right" style="margin-right:10px">작성</button>
+                        <button type="button" onclick= "location.href='/board/{{whatboard}}'" class="save btn btn-info float-right">목록으로</button>
+                        <button type="submit" class="save btn btn-info float-right" style="margin-right:10px">작성</button>
                     </td>
                 </tr>
             </form>
@@ -55,4 +51,4 @@
 <!--        </form>-->
 <!--    </table>-->
 <!--</div>-->
-{% endblock contents %}
+{% endblock content %}
