@@ -17,10 +17,10 @@ class SignIn(View):
 
         if u:
             login(request, user=u)
-            request.session['id'] = request.POST['id']
             return redirect('/board/free/')
 
         return render(request, 'join/signin.html')
+
 
 class SignUp(View):
     def get(self, request):

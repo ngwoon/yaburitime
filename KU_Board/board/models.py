@@ -1,12 +1,12 @@
 from django.db import models
-from datetime import datetime
-
+from django.conf import settings
 
 # Create your models here.
 
+
 class Post(models.Model):
     boardNum = models.IntegerField(primary_key=True)
-    nickname = models.CharField(max_length=10)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=1000)
     recommend = models.IntegerField(default=0)
@@ -24,8 +24,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    commentnum = models.IntegerField(primary_key=True)
-    whatpost = models.IntegerField()
-    nickname = models.CharField(max_length=10)
+    whatpost = models.ForeignKey('Post', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.CharField(max_length=300)
     date = models.DateTimeField(auto_now_add=True)

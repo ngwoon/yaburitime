@@ -3,16 +3,15 @@ from django.shortcuts import redirect
 from django.template import loader
 # Create your views here.
 from datetime import datetime
-from .models import Post
-from .forms import Postform
-from django.utils import timezone
+from .models import Post,Comment
+from .forms import Postform,Commentform
 from django.contrib import messages
+
 from django.core.paginator import Paginator
 from django.urls import reverse
 
 
 def board(request, whatboard):
-
     if whatboard == 'free':
         board_post = Post.objects.filter(category=1).order_by('-boardNum')
         categorykr = '자유게시판'
@@ -58,6 +57,7 @@ def board(request, whatboard):
 
 
 def writingpost(request, whatboard):
+
     if whatboard == 'free':
         category = 1
         changedwhatboard = '자유게시판'
@@ -65,16 +65,18 @@ def writingpost(request, whatboard):
         category = 2
         changedwhatboard = '비밀게시판'
 
-    if request.method == "POST":
-        form = Postform(request.POST)
 
+    if request.method == "POST":
+
+        form = Postform(request.POST)
         if form.is_valid():
+
             post = form.save(commit=False)
-            post.nickname = request.session['id'] #세션에서 가져오기
+            post.user = request.user  # 현재 로그인 유저 획득
             post.date = datetime.now()
             post.category = category
-
             post.save()
+
             pk = Post.objects.last().pk
             return redirect('/board/{}/{}'.format(whatboard, pk))
         else:
@@ -92,16 +94,40 @@ def writingpost(request, whatboard):
 
 
 def postdetail(request, whatboard, pk):
+
     if whatboard == 'free':
         categorykr = '자유게시판'
+        categoryNum = 1
     elif whatboard == 'secret':
         categorykr = '비밀게시판'
+        categoryNum = 2
+
+    if request.method == "POST":
+        form = Commentform(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.date = datetime.now()
+            comment.user = request.user
+            comment.whatpost = Post.objects.get(pk=pk)
+            comment.save()
+
+            return redirect('/board/{}/{}'.format(whatboard, pk))
+        else:
+            messages.error(request, '내용을 입력해주세요')
+    else:
+        form = Postform()
 
     board_post = Post.objects.get(pk=pk)
+    comment = Comment.objects.filter(whatpost=board_post).order_by('id')
+
+
     context = {
+        'form': form,
         'board_post': board_post,
         'categorykr': categorykr,
         'whatboard': whatboard,
+        'categoryNum': categoryNum,
+        'comment': comment,
     }
 
     board_post.count_up()
@@ -123,3 +149,4 @@ def unrecommend(request, whatboard, pk):
     post.save()
 
     return postdetail(request, whatboard, pk)
+

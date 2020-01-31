@@ -13,9 +13,15 @@
     <h1>{{board_post.title}}</h1>
 
     <div class="row">
-        <div class="col-md-1" style="float:left; margin-right:40px;">{{board_post.nickname}}</div>
-        <div class="col-md-4" style="float:left; margin-right:100px;">{{board_post.date}}</div>
-        <div class="col-md-2 float-right">조회수: {{board_post.Field}}회</div>
+        {% if categoryNum != 2 %}
+        <div class="col-md-1" style="float:left; margin-right:40px;">{{board_post.user}}</div>
+        {% else %}
+        <div class="col-md-1" style="float:left; margin-right:40px;">익명  </div>
+        {% endif %}
+
+        <div class="col-md-4" style="margin-right:100px;">{{board_post.date}}</div>
+        <div class="col-md-2 float-right" style="margin-right:20px; margin-left:120px;">조회수: {{board_post.Field}}회</div>
+        <button class="btn btn-info float-right" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'">목록으로</button>
     </div>
 
     <hr>
@@ -24,10 +30,9 @@
     <p>{{board_post.content}}</p>
     <br>
     <br>
-
-    <hr>
     <div class="row">
 
+<!--        추천/ 비추천 기능-->
         <style>
             .btn-group-xs > .btn, .btn-xs {
               padding: .25rem .4rem;
@@ -42,7 +47,7 @@
         </style>
 
         <h5 style="margin-top:3px">추천: {{board_post.recommend}} </h5>
-        <form action = "/board/{{whatboard}}/{{board_post.boardNum}}/recommend" method="POST">
+        <form action ="/board/{{whatboard}}/{{board_post.boardNum}}/recommend" method="POST">
             {% csrf_token %}
             <button class="btn btn-outline-info btn-xs" onclick="alert('추천!')">추천</button>
         </form>
@@ -54,8 +59,36 @@
             <button  class="btn btn-outline-info btn-xs" style="margin-left:20px; margin-right:50px; width:90px;height:30px;" onclick="alert('비추천!')"> 비추천</button>
         </form>
     </div>
+    <hr>
 
-    <button class="btn btn-info float-right" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'">목록으로</button>
+<!--댓글 선회하며 조회-->
+{% for comments in comment%}
+    {% if categoryNum != 2 %}
+    <span style="color:blue;">{{comments.user}}</span>
+    {% else %}
+    익명
+   {% endif %}
+    <p>{{comments.content}}</p>
+    <span class="small" style="color:gray;">{{ comments.date|timesince }}전</span>
+    <hr>
+{% endfor %}
+
+<!--댓글 입력-->
+    <form action ="/board/{{whatboard}}/{{board_post.boardNum}}" method="POST" class="post-form">
+        <textarea cols="10" rows="2" placeholder="댓글을 입력하세요" class="form-control" name="content" style="border:0;margin-bottom:8px;"></textarea>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-dark btn-xs" style="margin-left:5px;"> 작성</button>
+    </form>
+    <br>
+    <hr>
+    {% if messages %}
+    {% for message in messages %}
+        <script>
+            alert('{{ message }}')
+        </script>
+    {% endfor %}
+    {% endif %}
+
 </div>
 
 
