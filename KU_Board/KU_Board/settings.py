@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# Build paths inside the project like this: os.path.account(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -27,11 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
     'board.apps.BoardConfig',
+    'account.apps.JoinConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -100,11 +100,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Close the session when user closes the browser
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+)
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko'
 
 TIME_ZONE = 'Asia/Seoul'
 
@@ -120,7 +125,6 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
-#정적파일이 위치한 경로들을 지정하는 설정 항목
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
-    )
+)
