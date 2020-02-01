@@ -10,29 +10,29 @@
   </div>
 
   <div class="col-md-9">
-    <div class="container-fluid">
 
-    <div class="starter-template">
-      <h1>게시판</h1>
-      <p class="lead"></p>
+    <div class="container-fluid" style="margin-top:70px; margin-bottom:70px;">
+
+      <div class="starter-template text-center">
+        <h3>{{ categorykr }}</h3>
+        <p class="lead"></p>
+      </div>
+    </div><!-- /.container -->
+
+    {% if categoryNum != 3 %}
+
+    <div class="float-right">
+      <a href="posting/" class="btn btn-outline-info " style="margin-bottom:10px;" >글쓰기</a> <!-- // 글쓰기 url 로 이동 -->
     </div>
+    {% endif %}
 
-  <div class="float-right">
-    <a href="posting/" class="btn btn-info" >글쓰기</a> <!-- // 글쓰기 html 로 이동 -->
-  </div>
 
-  </div><!-- /.container -->
 
 <div class="container-fluid">
   <table class="table table-hover">
     <thead>
     <tr>
-      <th style="width: 70px; ">글번호</th>
-      <th style="width: 100px;">작성자</th>
-      <th style="width: 500px;">제목</th>
-      <th style="width: 200px;">날짜</th>
-      <th style="width: 80px;">조회수</th>
-      <th style="width: 80px;">추천수</th>
+      <th>{{ categorykr }}</th>
     </tr>
     </thead>
 
@@ -41,12 +41,22 @@
 
     <tr style = "cursor:pointer;" onClick = " location.href=' {{ board_posts.boardNum }} '"> <!--게시글로 이동-->
 
-      <td>{{board_posts.boardNum}}</td>
-      <td>{{board_posts.nickname}}</td>
-      <td>{{board_posts.title}}</td>
-      <td>{{board_posts.date}}</td>
-      <td>{{board_posts.Field}}</td>
-      <td>{{board_posts.recommend}}</td>
+      <td>
+        <strong>{{board_posts.title}}</strong>
+        <div class="small" style="color:gray; margin: 5px 0px 0px 20px; width: 600px; max-height: 60px; overflow: hidden;text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; word-wrap:break-word;">
+          <p>{{board_posts.content}}</p>
+
+        </div>
+
+        {% if board_posts.category != 2 %}
+        <span class="small" style="color:dark">{{board_posts.user}}</span>
+        {% else %}
+        <span class="small" style="color:dark">익명  </span>
+        {% endif %}
+        <span class="small" style="color:gray">&nbsp;{{ board_posts.date|timesince }}전</span>
+        <span class="float-right">&nbsp{{board_posts.recommend.count}}</span>
+        <i class="far fa-thumbs-up float-right" style="margin-top:3px;"></i>
+      </td>
     </tr>
 
     {% endfor %}
@@ -54,6 +64,7 @@
   </table>
 
 <!--pagination-->
+
   <div style="padding-right: 400px; padding-left: 400px;" class="text-center">
     <table class="table table-bordered table-sm">
       <tr>
