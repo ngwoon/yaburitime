@@ -8,7 +8,7 @@ from django.contrib.auth import login, authenticate, logout
 
 class SignIn(View):
     def get(self, request):
-        return render(request, 'join/signin.html')
+        return render(request, 'account/signin.html')
 
     def post(self, request):
 
@@ -18,12 +18,12 @@ class SignIn(View):
             login(request, user=u)
             return redirect('board')
 
-        return render(request, 'join/signin.html')
+        return render(request, 'account/signin.html')
 
 class SignUp(View):
     def get(self, request):
         form = SignUpForm(request.POST)
-        return render(request, 'join/signup.html', {'form' : form})
+        return render(request, 'account/signup.html', {'form' : form})
 
     def post(self, request):
         form = SignUpForm(request.POST)

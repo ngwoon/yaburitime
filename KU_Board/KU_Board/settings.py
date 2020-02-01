@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# Build paths inside the project like this: os.path.account(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'board.apps.BoardConfig',
-    'join.apps.JoinConfig',
+    'account.apps.JoinConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,7 +120,6 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
-#정적파일이 위치한 경로들을 지정하는 설정 항목
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
-    )
+)
