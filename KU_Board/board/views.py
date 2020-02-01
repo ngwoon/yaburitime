@@ -22,6 +22,11 @@ def board(request, whatboard):
         categorykr = '비밀게시판'
         categoryNum = 2
 
+    elif whatboard == 'hot':
+        board_post = Post.objects.filter(recommendCount__gte=1).order_by('-boardNum')
+        categorykr = '인기게시판'
+        categoryNum = 3
+
     else:
         return redirect('/board/free/')
 
@@ -63,6 +68,9 @@ def writingpost(request, whatboard):
     elif whatboard == 'secret':
         category = 2
         changedwhatboard = '비밀게시판'
+    elif whatboard == 'hot':
+        category = 3
+        changedwhatboard = '인기게시판'
 
     if request.method == "POST":
 
@@ -93,11 +101,11 @@ def writingpost(request, whatboard):
 
 def postdetail(request, whatboard, pk):
     if whatboard == 'free':
-        categorykr = '자유게시판'
         categoryNum = 1
     elif whatboard == 'secret':
-        categorykr = '비밀게시판'
         categoryNum = 2
+    elif whatboard == 'hot':
+        categoryNum = 3
 
     if request.method == "POST":
         form = Commentform(request.POST)
@@ -117,6 +125,13 @@ def postdetail(request, whatboard, pk):
     board_post = Post.objects.get(pk=pk)
     comment = Comment.objects.filter(whatpost=board_post).order_by('id')
 
+    if board_post.category == 1:
+        categorykr = '자유게시판'
+    elif board_post.category == 2:
+        categorykr = '비밀게시판'
+    elif board_post.category == 3:
+        categorykr = '인기게시판'
+
     context = {
         'form': form,
         'board_post': board_post,
@@ -132,14 +147,16 @@ def postdetail(request, whatboard, pk):
 
 def recommend(request, whatboard, pk):
     post = Post.objects.get(pk=pk)
-    for user in post.recommend:
+    user = None
+    for user in post.recommend.all():
         if user == request.user:
-            user.delete()
+            post.recommend.remove(user)
             break;
 
     if user != request.user:
-        user.add(request.user)  # recommend: many to many field 에 현재 추천한 user 정보 입력
+        post.recommend.add(request.user)  # recommend: many to many field 에 현재 추천한 user 정보 입력
 
+    post.recommendCount = post.recommend.count()
     post.Field -= 1  # 조회수 감소
     post.save()
     return redirect('/board/{}/{}'.format(whatboard, pk))
@@ -147,14 +164,25 @@ def recommend(request, whatboard, pk):
 
 def unrecommend(request, whatboard, pk):
     post = Post.objects.get(pk=pk)
-    for user in post.recommend:
+    user = None
+
+    for user in post.unrecommend.all():
         if user == request.user:
-            user.delete()
+            post.unrecommend.remove(user)
             break;
 
     if user != request.user:
-        user.add(request.user)  # unrecommend: many to many field 에 현재 추천한 user 정보 입력
+        post.unrecommend.add(request.user)  # unrecommend: many to many field 에 현재 추천한 user 정보 입력
     post.Field -= 1
+    post.unrecommendCount = post.unrecommend.count()
     post.save()
 
     return redirect('/board/{}/{}'.format(whatboard, pk))
+
+
+def deletepost(request, whatboard, pk):
+    post = Post.objects.get(pk=pk)
+    if request.user == post.user:
+        post.delete()
+
+    return redirect('/board/{}'.format(whatboard))

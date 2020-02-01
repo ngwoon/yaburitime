@@ -10,10 +10,12 @@ class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=1000)
-    recommend = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='Post_recomment')
-    unrecommend = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='Post_unrecomment')
+    recommend = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='Post_recommend')
+    recommendCount = models.IntegerField(default=0)
+    unrecommend = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='Post_unrecommend')
+    unrecommendCount = models.IntegerField(default=0)
     date = models.DateTimeField(auto_now_add=True)
-    category = models.IntegerField(default=0)  # 1-> 자유게시판, 2->비밀게시판
+    category = models.IntegerField(default=0)  # 1-> 자유게시판, 2->비밀게시판 3-> 핫게시판
     Field = models.IntegerField(default=0)  # 조회수
 
     def count_up(self):  # 조회수 증가방식 바꿀필요 있음

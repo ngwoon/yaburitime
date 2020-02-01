@@ -11,15 +11,21 @@
     <h1>{{board_post.title}}</h1>
 
     <div class="row">
-        {% if categoryNum != 2 %}
+        {% if board_post.category != 2 %}
         <div class="col-md-1" style="float:left; margin-right:40px;">{{board_post.user}}</div>
         {% else %}
         <div class="col-md-1" style="float:left; margin-right:40px;">익명  </div>
         {% endif %}
 
         <div class="col-md-4" style="margin-right:100px;">{{board_post.date}}</div>
-        <div class="col-md-2 float-right" style="margin-right:20px; margin-left:120px;">조회수: {{board_post.Field}}회</div>
-        <button class="btn btn-info float-right" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'">목록으로</button>
+        <div class="col-md-2" style="margin-right:20px; margin-left:120px;">조회수: {{board_post.Field}}회</div>
+        {% if request.user == board_post.user %}
+        <span class="btn btn-danger" onclick = "location.href = '/board/{{whatboard}}/{{board_post.pk}}/del'" style="margin-right:5px;">삭제</span>
+        <span class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" >목록으로</span>
+
+        {% else %}
+        <span class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" style="margin-left:70px;">목록으로</span>
+        {% endif %}
     </div>
 
     <hr>
@@ -61,7 +67,7 @@
 
     <!--댓글 선회하며 조회-->
     {% for comments in comment%}
-        {% if categoryNum != 2 %}
+        {% if board_post.category != 2 %}
         <span style="color:blue;">{{comments.user}}</span>
         {% else %}
         <span style="color:blue;">익명</span>

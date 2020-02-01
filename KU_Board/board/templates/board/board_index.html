@@ -19,9 +19,12 @@
       </div>
     </div><!-- /.container -->
 
+    {% if categoryNum != 3 %}
+
     <div class="float-right">
       <a href="posting/" class="btn btn-outline-info " style="margin-bottom:10px;" >글쓰기</a> <!-- // 글쓰기 url 로 이동 -->
     </div>
+    {% endif %}
 
 
 
@@ -45,13 +48,13 @@
 
         </div>
 
-        {% if categoryNum != 2 %}
+        {% if board_posts.category != 2 %}
         <span class="small" style="color:dark">{{board_posts.user}}</span>
         {% else %}
         <span class="small" style="color:dark">익명  </span>
         {% endif %}
         <span class="small" style="color:gray">&nbsp;{{ board_posts.date|timesince }}전</span>
-        <span class="float-right">&nbsp{{board_posts.recommend}}</span>
+        <span class="float-right">&nbsp{{board_posts.recommend.count}}</span>
         <i class="far fa-thumbs-up float-right" style="margin-top:3px;"></i>
       </td>
     </tr>
