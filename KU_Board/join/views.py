@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
-from .models import User
+from .models import CustomUser
 from .forms import SignUpForm
 from django.contrib.auth import login, authenticate, logout
 # Create your views here.
