@@ -22,5 +22,4 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('board/', include('board.urls')),
     path('join/', include('join.urls')),
-    path('mypage/', include('mypage.urls')),
 ]
