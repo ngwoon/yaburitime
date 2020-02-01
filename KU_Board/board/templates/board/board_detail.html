@@ -1,18 +1,31 @@
 {% extends "base.html" %}
 
-{% block contents %}
+{% block content %}
+
 
 <div class="container">
-    <br>
-    <br>
-    <br>
+    <br><br><br>
+    <h2 class="text-center">{{categorykr}}</h2>
+    <br><br>
 
     <h1>{{board_post.title}}</h1>
 
     <div class="row">
-        <div class="col-md-1" style="float:left; margin-right:40px;">{{board_post.nickname}}</div>
-        <div class="col-md-4" style="float:left; margin-right:100px;">{{board_post.date}}</div>
-        <div class="col-md-2 float-right">조회수: {{board_post.Field}}회</div>
+        {% if board_post.category != 2 %}
+        <div class="col-md-1" style="float:left; margin-right:40px;">{{board_post.user}}</div>
+        {% else %}
+        <div class="col-md-1" style="float:left; margin-right:40px;">익명  </div>
+        {% endif %}
+
+        <div class="col-md-4" style="margin-right:100px;">{{board_post.date}}</div>
+        <div class="col-md-2" style="margin-right:20px; margin-left:120px;">조회수: {{board_post.Field}}회</div>
+        {% if request.user == board_post.user %}
+        <span class="btn btn-danger" onclick = "location.href = '/board/{{whatboard}}/{{board_post.pk}}/del'" style="margin-right:5px;">삭제</span>
+        <span class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" >목록으로</span>
+
+        {% else %}
+        <span class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" style="margin-left:70px;">목록으로</span>
+        {% endif %}
     </div>
 
     <hr>
@@ -21,27 +34,67 @@
     <p>{{board_post.content}}</p>
     <br>
     <br>
-
-    <hr>
     <div class="row">
 
+<!--        추천/ 비추천 기능-->
+        <style>
+            .btn-group-xs > .btn, .btn-xs {
+              padding: .25rem .4rem;
+              font-size: .999rem;
+              line-height: .5;
+              border-radius: .2rem;
+              margin-left:20px;
+              margin-right:50px;
+              width:90px;
+              height:30px;
+            }
+        </style>
 
-        <div class="" style="float:left; margin-top:5px;"><h5>추천: {{board_post.recommend}} </h5></div>
-        <form action = "/board/{{board_post.boardNum}}/recommend" method="POST">
+        <h5 style="margin-top:3px">추천: {{board_post.recommend.count}} </h5>
+        <form action ="/board/{{whatboard}}/{{board_post.boardNum}}/recommend" method="POST">
             {% csrf_token %}
-            <button name="rec" class="btn btn-info btn-xs" style="float:left; margin-left:20px; margin-right:50px " value="{{board_post.boardNum}}" onclick="alert('추천!')">추천하기</button>
+            <button class="btn btn-outline-info btn-xs" onclick="alert('추천!')">추천</button>
         </form>
 
-        <div class="" style="float:left;margin-top:5px;"><h5>비추천: {{board_post.unrecommend}}</h5></div>
+        <h5 style="margin-top:3px"> 비추천: {{board_post.unrecommend.count}}</h5>
 
-        <form action = "/board/{{board_post.boardNum}}/unrecommend" method="POST">
+        <form action = "/board/{{whatboard}}/{{board_post.boardNum}}/unrecommend" method="POST">
             {% csrf_token %}
-            <button name="unrec" class="btn btn-info btn-xs" style="float:left; margin-left:20px; margin-right:50px" value="{{board_post.boardNum}}" onclick="alert('비추천!')"> 비추천하기</button>
+            <button  class="btn btn-outline-info btn-xs" onclick="alert('비추천!')"> 비추천</button>
         </form>
     </div>
+    <hr>
 
-    <button class="btn btn-info float-right" onclick = "location.href = '/board'">목록으로</button>
+    <!--댓글 선회하며 조회-->
+    {% for comments in comment%}
+        {% if board_post.category != 2 %}
+        <span style="color:blue;">{{comments.user}}</span>
+        {% else %}
+        <span style="color:blue;">익명</span>
+       {% endif %}
+        <p>{{comments.content}}</p>
+        <span class="small" style="color:gray;">{{ comments.date|timesince }}전</span>
+        <hr>
+    {% endfor %}
+
+    <!--댓글 입력-->
+    <form action ="/board/{{whatboard}}/{{board_post.boardNum}}" method="POST" class="post-form">
+        <textarea cols="10" rows="2" placeholder="댓글을 입력하세요" class="form-control" name="content" style="border:0;margin-bottom:8px;"></textarea>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-dark btn-xs" style="margin-left:5px;"> 작성</button>
+    </form>
+    <br>
+    <hr>
+
+    {% if messages %}
+    {% for message in messages %}
+        <script>
+            alert('{{ message }}')
+        </script>
+    {% endfor %}
+    {% endif %}
+
 </div>
 
 
-{% endblock contents %}
+{% endblock content %}

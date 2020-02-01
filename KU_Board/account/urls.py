@@ -1,4 +1,4 @@
-"""KU_Board URL Configuration
+"""LogIn URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -14,12 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
 from . import views
 
+app_name = 'account'
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.HomeView.as_view(), name='home'),
-    path('board/', include('board.urls')),
-    path('account/', include('account.urls')),
+    path('', views.SignIn.as_view(), name='signin'),
+    path('signout/', views.signOut, name='signout'),
+    path('signup/', views.SignUp.as_view(), name='signup'),
 ]
