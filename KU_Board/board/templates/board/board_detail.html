@@ -44,13 +44,13 @@
             }
         </style>
 
-        <h5 style="margin-top:3px">추천: {{board_post.recommend}} </h5>
+        <h5 style="margin-top:3px">추천: {{board_post.recommend.count}} </h5>
         <form action ="/board/{{whatboard}}/{{board_post.boardNum}}/recommend" method="POST">
             {% csrf_token %}
             <button class="btn btn-outline-info btn-xs" onclick="alert('추천!')">추천</button>
         </form>
 
-        <h5 style="margin-top:3px"> 비추천: {{board_post.unrecommend}}</h5>
+        <h5 style="margin-top:3px"> 비추천: {{board_post.unrecommend.count}}</h5>
 
         <form action = "/board/{{whatboard}}/{{board_post.boardNum}}/unrecommend" method="POST">
             {% csrf_token %}

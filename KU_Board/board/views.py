@@ -132,7 +132,14 @@ def postdetail(request, whatboard, pk):
 
 def recommend(request, whatboard, pk):
     post = Post.objects.get(pk=pk)
-    post.recommend += 1
+    for user in post.recommend:
+        if user == request.user:
+            user.delete()
+            break;
+
+    if user != request.user:
+        user.add(request.user)  # recommend: many to many field 에 현재 추천한 user 정보 입력
+
     post.Field -= 1  # 조회수 감소
     post.save()
     return redirect('/board/{}/{}'.format(whatboard, pk))
@@ -140,7 +147,13 @@ def recommend(request, whatboard, pk):
 
 def unrecommend(request, whatboard, pk):
     post = Post.objects.get(pk=pk)
-    post.unrecommend += 1
+    for user in post.recommend:
+        if user == request.user:
+            user.delete()
+            break;
+
+    if user != request.user:
+        user.add(request.user)  # unrecommend: many to many field 에 현재 추천한 user 정보 입력
     post.Field -= 1
     post.save()
 
