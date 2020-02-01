@@ -136,7 +136,6 @@ def recommend(request, whatboard, pk):
     post.Field -= 1  # 조회수 감소
     post.save()
     return redirect('/board/{}/{}'.format(whatboard, pk))
-    # return postdetail(request, whatboard, pk)
 
 
 def unrecommend(request, whatboard, pk):
