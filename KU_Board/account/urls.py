@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-app_name = 'join'
+app_name = 'account'
 urlpatterns = [
     path('', views.SignIn.as_view(), name='signin'),
     path('signout/', views.signOut, name='signout'),
