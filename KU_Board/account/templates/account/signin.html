@@ -7,13 +7,13 @@
     <title>로그인</title>
 </head>
 <body>
-    <form action="/join/" method="post">
+    <form action="/account/" method="post">
         {% csrf_token %}
         <div id="login"> <br>
-            아이디&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" value="아이디" name="id"> <br>
-            비밀번호&nbsp: <input type="password" value="비밀번호" name="pw">
+            아이디&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" placeholder="아이디" name="id"> <br>
+            비밀번호&nbsp: <input type="password" placeholder="비밀번호" name="pw">
             <input type="submit" value="로그인"> <br> <br>
-            &nbsp&nbsp아직 이 곳 회원이 아니신가요? <a href="/join/signUp/">회원가입</a>
+            &nbsp&nbsp아직 이 곳 회원이 아니신가요? <a href="/account/signUp/">회원가입</a>
         </div>
     </form>
 </body>

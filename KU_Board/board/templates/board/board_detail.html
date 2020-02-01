@@ -2,13 +2,11 @@
 
 {% block content %}
 
+
 <div class="container">
-    <br>
-    <br>
-    <br>
+    <br><br><br>
     <h2 class="text-center">{{categorykr}}</h2>
-    <br>
-    <br>
+    <br><br>
 
     <h1>{{board_post.title}}</h1>
 
@@ -56,24 +54,24 @@
 
         <form action = "/board/{{whatboard}}/{{board_post.boardNum}}/unrecommend" method="POST">
             {% csrf_token %}
-            <button  class="btn btn-outline-info btn-xs" style="margin-left:20px; margin-right:50px; width:90px;height:30px;" onclick="alert('비추천!')"> 비추천</button>
+            <button  class="btn btn-outline-info btn-xs" onclick="alert('비추천!')"> 비추천</button>
         </form>
     </div>
     <hr>
 
-<!--댓글 선회하며 조회-->
-{% for comments in comment%}
-    {% if categoryNum != 2 %}
-    <span style="color:blue;">{{comments.user}}</span>
-    {% else %}
-    <span style="color:blue;">익명</span>
-   {% endif %}
-    <p>{{comments.content}}</p>
-    <span class="small" style="color:gray;">{{ comments.date|timesince }}전</span>
-    <hr>
-{% endfor %}
+    <!--댓글 선회하며 조회-->
+    {% for comments in comment%}
+        {% if categoryNum != 2 %}
+        <span style="color:blue;">{{comments.user}}</span>
+        {% else %}
+        <span style="color:blue;">익명</span>
+       {% endif %}
+        <p>{{comments.content}}</p>
+        <span class="small" style="color:gray;">{{ comments.date|timesince }}전</span>
+        <hr>
+    {% endfor %}
 
-<!--댓글 입력-->
+    <!--댓글 입력-->
     <form action ="/board/{{whatboard}}/{{board_post.boardNum}}" method="POST" class="post-form">
         <textarea cols="10" rows="2" placeholder="댓글을 입력하세요" class="form-control" name="content" style="border:0;margin-bottom:8px;"></textarea>
         {% csrf_token %}
