@@ -13,4 +13,7 @@ urlpatterns = [
     path('<str:whatboard>/<int:pk>/unrecommend', views.unrecommend, name='unrecommend'),
 
     path('<str:whatboard>/<int:pk>/del', views.deletepost, name='deletepost'),
-]
+
+    path('<str:whatboard>/<int:pk>/comment/<int:commentnumber>', views.deletecomment, name='deletecomment'),
+    path('<str:whatboard>/<int:pk>/edit', views.edit, name='edit'),
+    ]

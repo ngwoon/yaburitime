@@ -18,13 +18,26 @@
         {% endif %}
 
         <div class="col-md-4" style="margin-right:100px;">{{board_post.date}}</div>
-        <div class="col-md-2" style="margin-right:20px; margin-left:120px;">조회수: {{board_post.Field}}회</div>
+        <div class="col-md-2" style="margin-left:100px;">조회수: {{board_post.Field}}회</div>
+
+        <!--삭제버튼-->
         {% if request.user == board_post.user %}
-        <span class="btn btn-danger" onclick = "location.href = '/board/{{whatboard}}/{{board_post.pk}}/del'" style="margin-right:5px;">삭제</span>
-        <span class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" >목록으로</span>
+        <button class="btn btn-default" style="border: 1px solid;" onclick = "location.href = '/board/{{whatboard}}/{{board_post.pk}}/edit'">수정</button>
+        <button class="btn btn-danger" onclick = "alert_delete_post()" style="margin-right:5px; margin-left:5px">삭제</button>
+
+        <script>
+         function alert_delete_post(){
+             if(confirm("글을 지우시겠습니까?"))
+             {
+              location.href = "/board/{{whatboard}}/{{board_post.pk}}/del"
+             }
+         }
+        </script>
+
+        <button class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" >목록으로</button>
 
         {% else %}
-        <span class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" style="margin-left:70px;">목록으로</span>
+        <button class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" style="margin-left:90px;">목록으로</button>
         {% endif %}
     </div>
 
@@ -74,6 +87,20 @@
        {% endif %}
         <p>{{comments.content}}</p>
         <span class="small" style="color:gray;">{{ comments.date|timesince }}전</span>
+
+
+        {% if request.user == comments.user%}
+        <button class="btn btn-default float-right" style="border: 1px solid;" onclick = "alert_delete_comment()">삭제</button>
+
+        <script>
+         function alert_delete_comment(){
+             if(confirm("댓글을 지우시겠습니까?"))
+             {
+              location.href = "/board/{{whatboard}}/{{board_post.pk}}/comment/{{comments.id}}"
+             }
+         }
+        </script>
+        {% endif %}
         <hr>
     {% endfor %}
 
