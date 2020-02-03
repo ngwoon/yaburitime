@@ -23,7 +23,7 @@ def board(request, whatboard):
         categoryNum = 2
 
     elif whatboard == 'hot':
-        board_post = Post.objects.filter(recommendCount__gte=1).order_by('-boardNum')
+        board_post = Post.objects.filter(recommendCount__gte=1).order_by('-boardNum')  # 추천수 n개 이상만 게시판에 표현
         categorykr = '인기게시판'
         categoryNum = 3
 
@@ -123,7 +123,7 @@ def postdetail(request, whatboard, pk):
         form = Commentform()
 
     board_post = Post.objects.get(pk=pk)
-    comment = Comment.objects.filter(whatpost=board_post).order_by('id')
+    comment = Comment.objects.filter(whatpost=board_post).order_by('date')
 
     if board_post.category == 1:
         categorykr = '자유게시판'
