@@ -46,7 +46,7 @@ def board(request, whatboard):
     if pageposts.number + 2 >= pageposts.paginator.num_pages:
         is_lastpage_hide = True
 
-    request.session['page'] = pageposts.number
+    request.session['page'] = pageposts.number  # 세션으로 페이지네이션 정보 넘김
 
     context = {
         'board_post': board_post,
