@@ -11,30 +11,49 @@
         <div class="container-fluid">
             <table class="table table-striped">
                 <thead>
-                <h3 align="center">기본 정보</h3>
+                <br>
+                    <h3 align="center">기본 정보</h3>
+                <br>
                 </thead>
                 <tr>
+                    <p style="text-align: center;">
+                      <img src = "/static/image/profile_image.png" width="120px" height="120px">
+                    </p>
+                </tr>
+                <tr>
+                        <td>
+                            <p style="text-align:center;">
+                                ID
+                            </p>
+                        </td>
+                        <td>
+                            <p style="text-align:center;">
+                            {{ user.username }}
+                            </p>
+                        </td>
+                </tr>
+                <tr>
                     <td>
-                        아이디
+                        <p style="text-align:center;">
+                            이름
+                        </p>
                     </td>
                     <td>
-                        {{ user.username }}
+                        <p style="text-align:center;">
+                            {{ user.name }}
+                        </p>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        이름
+                        <p style="text-align:center;">
+                            닉네임
+                        </p>
                     </td>
                     <td>
-                        {{ user.name }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        닉네임
-                    </td>
-                    <td>
-                        {{ user.nickname }}
+                        <p style="text-align:center;">
+                            {{ user.nickname }}
+                        </p>
                     </td>
                 </tr>
             </table>
