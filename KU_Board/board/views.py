@@ -13,6 +13,8 @@ from django.urls import reverse
 
 
 def board(request, whatboard):
+    if request.user.is_anonymous:
+        return redirect('/')
     if whatboard == 'free':
         board_post = Post.objects.filter(category=1).order_by('-boardNum')
         categorykr = '자유게시판'
@@ -63,6 +65,8 @@ def board(request, whatboard):
 
 
 def writingpost(request, whatboard):
+    if request.user.is_anonymous:
+        return redirect('/')
     if whatboard == 'free':
         category = 1
         changedwhatboard = '자유게시판'
@@ -101,6 +105,8 @@ def writingpost(request, whatboard):
 
 
 def postdetail(request, whatboard, pk):
+    if request.user.is_anonymous:
+        return redirect('/')
     if whatboard == 'free':
         categoryNum = 1
     elif whatboard == 'secret':
@@ -147,6 +153,8 @@ def postdetail(request, whatboard, pk):
 
 
 def recommend(request, whatboard, pk):
+    if request.user.is_anonymous:
+        return redirect('/')
     post = Post.objects.get(pk=pk)
     user = None
     for user in post.recommend.all():
@@ -164,6 +172,8 @@ def recommend(request, whatboard, pk):
 
 
 def unrecommend(request, whatboard, pk):
+    if request.user.is_anonymous:
+        return redirect('/')
     post = Post.objects.get(pk=pk)
     user = None
 
@@ -182,6 +192,8 @@ def unrecommend(request, whatboard, pk):
 
 
 def deletepost(request, whatboard, pk):
+    if request.user.is_anonymous:
+        return redirect('/')
     post = Post.objects.get(pk=pk)
     if request.user == post.user:
         post.delete()
@@ -190,6 +202,8 @@ def deletepost(request, whatboard, pk):
 
 
 def deletecomment(request, whatboard, pk, commentnumber):
+    if request.user.is_anonymous:
+        return redirect('/')
     comment = Comment.objects.get(pk=commentnumber)
     if request.user == comment.user:
         comment.delete()
@@ -198,6 +212,8 @@ def deletecomment(request, whatboard, pk, commentnumber):
 
 
 def edit(request, whatboard, pk):
+    if request.user.is_anonymous:
+        return redirect('/')
     if whatboard == 'free':
         changedwhatboard = '자유게시판'
     elif whatboard == 'secret':
