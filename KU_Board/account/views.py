@@ -26,12 +26,19 @@ class SignUp(View):
     def post(self, request):
         form = SignUpForm(request.POST)
         if form.is_valid():
+            id_dup = CustomUser.objects.filter(username=form.cleaned_data['username'])
+            nickname_dup = CustomUser.objects.filter(nickname=form.cleaned_data['nickname'])
+            
+            if id_dup==None:
+                return HttpResponse('아이디 중복입니다.')
+            if nickname_dup == None:
+                return HttpResponse('닉네임 중복입니다.')
+
             form.save()
             return redirect('/board/free')
         else:
-            print(form.error_messages)
-            return HttpResponse('에러')
-
+            print(form.errors)
+            return HttpResponse('입력 형식이 잘못되었습니다. 글자 제한을 잘 지켜주세요')
 
 def signOut(request):
     logout(request)

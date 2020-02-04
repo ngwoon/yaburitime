@@ -32,7 +32,6 @@ class SignUpForm(UserCreationForm):
             user.save()
         return user
 
-
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
