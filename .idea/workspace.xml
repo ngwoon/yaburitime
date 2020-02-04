@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ff5829cd-7759-421c-bda0-7d1848e32247" name="Default Changelist" comment="">
+    <list default="true" id="43592d28-3eab-4515-aa9b-abdcee800911" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/KU_Board.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/KU_Board.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/KU_Board/board/templates/board/board_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/board/templates/board/board_post.html" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/KU_Board/board/templates/board/board_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/board/templates/board/board_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KU_Board/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/templates/base.html" afterDir="false" />
+>>>>>>> 39d80155c20af291cb893a3a1c92893bc29db634
+=======
       <change beforePath="$PROJECT_DIR$/KU_Board/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+>>>>>>> 3ed07f5b6ad1ec7db8cab454454e18f28aff2928
+=======
+      <change beforePath="$PROJECT_DIR$/KU_Board/account/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/account/templates/account/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KU_Board/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KU_Board/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/KU_Board/templates/index.html" afterDir="false" />
+>>>>>>> dev-board
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +52,11 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sys09\PycharmProjects\KU_Board" />
+      <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board" />
+      <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board\board\templates\board" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sys09\PycharmProjects\KU_Board\KU_Board\static" />
       <recent name="C:\Users\sys09\PycharmProjects\KU_Board\KU_Board\static\board" />
@@ -42,21 +64,16 @@
       <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board\templates" />
       <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board\join" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\sys09\PycharmProjects\KU_Board" />
-      <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board" />
-      <recent name="C:\Users\todor\PycharmProjects\KU_Board\KU_Board\board\templates\board" />
-    </key>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
+  <component name="RunDashboard">
+    <option name="ruleStates">
       <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
       </list>
     </option>
   </component>
@@ -87,17 +104,11 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="142" y="0" key="SettingsEditor" timestamp="1580384421445">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1580384421445" />
-    <state x="333" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1580384339340">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="333" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1580384339340" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1580386295699">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1580386295699" />
+    <state x="142" y="0" key="SettingsEditor" />
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" />
+    <state x="333" y="165" key="com.intellij.ide.util.TipDialog" />
+    <state x="333" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" />
   </component>
 </project>
