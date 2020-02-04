@@ -19,7 +19,7 @@ from . import views
 
 app_name = 'account'
 urlpatterns = [
-    path('', views.SignIn.as_view(), name='signin'),
+    path('signin', views.SignIn.as_view(), name='signin'),
     path('signout/', views.signOut, name='signout'),
     path('signup/', views.SignUp.as_view(), name='signup'),
 ]
