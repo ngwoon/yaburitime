@@ -105,7 +105,7 @@
     {% endfor %}
 
     <!--댓글 입력-->
-    <form action ="/board/{{whatboard}}/{{board_post.boardNum}}" method="POST" class="post-form">
+    <form action ="/board/{{whatboard}}/{{board_post.boardNum}}/" method="POST" class="post-form">
         <textarea cols="10" rows="2" placeholder="댓글을 입력하세요" class="form-control" name="content" style="border:0;margin-bottom:8px;"></textarea>
         {% csrf_token %}
         <button type="submit" class="btn btn-outline-dark btn-xs" style="margin-left:5px;"> 작성</button>

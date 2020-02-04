@@ -16,4 +16,4 @@ urlpatterns = [
 
     path('<str:whatboard>/<int:pk>/comment/<int:commentnumber>', views.deletecomment, name='deletecomment'),
     path('<str:whatboard>/<int:pk>/edit/', views.edit, name='edit'),
-    ]
+]
