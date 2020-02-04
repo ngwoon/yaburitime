@@ -7,13 +7,13 @@ from django.contrib.auth import login, authenticate, logout
 # Create your views here.
 
 
-class Signin(View):
+class SignIn(View):
 
     def get(self, request):
         return render(request, 'account/signin.html')
 
     def post(self, request):
-        u = authenticate(username=request.POST['username'], password=request.POST['password'])
+        u = authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
         if u:
             login(request, user=u)
             return redirect('/board/free/')
@@ -21,7 +21,7 @@ class Signin(View):
         return render(request, 'account/signin.html')
 
 
-class Signup(View):
+class SignUp(View):
     def get(self, request):
         form = SignUpForm(request.POST)
         return render(request, 'account/signup.html', {'form' : form})
@@ -39,16 +39,15 @@ class Signup(View):
 
             form.save()
 
-            u = authenticate(username=request.POST['username'], password=request.POST['password1'])
+            u = authenticate(username=request.POST.get('username'), password=request.POST.get('password1'))
             if u:
                 login(request, user=u)
-
-            return redirect('/board/free')
+                return redirect('/board/free/')
+            return redirect('home')
         else:
-            print(form.errors)
             return HttpResponse('입력 형식이 잘못되었습니다. 글자 제한을 잘 지켜주세요')
 
 
-def signout(request):
+def signOut(request):
     logout(request)
-    return redirect('board')
+    return redirect('home')
