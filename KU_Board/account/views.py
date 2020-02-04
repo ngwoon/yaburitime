@@ -10,13 +10,9 @@ from django.contrib.auth import login, authenticate, logout
 class SignIn(View):
 
     def get(self, request):
-        if request.user.is_anonymous:
-            return redirect('/')
         return render(request, 'account/signin.html')
 
     def post(self, request):
-        if request.user.is_anonymous:
-            return redirect('/')
         u = authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
         if u:
             login(request, user=u)
@@ -27,14 +23,10 @@ class SignIn(View):
 
 class SignUp(View):
     def get(self, request):
-        if request.user.is_anonymous:
-            return redirect('/')
         form = SignUpForm(request.POST)
         return render(request, 'account/signup.html', {'form' : form})
 
     def post(self, request):
-        if request.user.is_anonymous:
-            return redirect('/')
         form = SignUpForm(request.POST)
         if form.is_valid():
             id_dup = CustomUser.objects.filter(username=form.cleaned_data['username'])
