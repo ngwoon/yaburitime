@@ -49,7 +49,6 @@ class SignUp(View):
 
 
 class MyPage(View):
-
     def get(self, request):
         if request.user.is_anonymous:
             return redirect('/')
