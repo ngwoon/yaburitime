@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="container-fluid bg-light">
+        <br>
+        <br>
+        <br>
+
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <th>
+                        <h4>{{default_table.table_name}}</h4>
+
+                        <div>
+                            <span>학점</span>
+                            <span>date</span>
+                        </div>
+
+                        <div>
+                            설정
+                       </div>
+                    </th>
+                </thead>
+
+            </table>
+
+
+            <table class="table table-bordered table-hover">
+                    {% for tt in timetable %}
+                    <tr style = "cursor:pointer;" onClick = " location.href='#'">
+                        <td>
+                            <span class="text-success align-middle" style="font-size: 20px;">{{tt.table_name}}</span>
+                            <button class="float-right btn btn-info btn-sm">삭제</button>
+                            <span class="align-middle float-right" style="font-size: small; margin-right: 10px; margin-top:5px; color: gray;">기본시간표</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr style = "cursor:pointer;" onClick = " location.href='#'">
+                        <td>
+                            <span>새 시간표 만들기</span>
+                        </td>
+                    </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="container bg-light">
+            <br><br><br>
+
+            <table class="table table-bordered table-striped">
+              <tr>
+                <th></th>
+                <th style="padding-left:60px; padding-right: 20px">월</th>
+                <th style="padding-left:60px; padding-right: 20px">화</th>
+                <th style="padding-left:60px; padding-right: 20px">수</th>
+                <th style="padding-left:60px; padding-right: 20px">목</th>
+                <th style="padding-left:60px; padding-right: 20px">금</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>1교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">9시</td>
+              </tr>
+              <tr>
+                <td>2교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">10시</td>
+              </tr>
+              <tr>
+                <td>4교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">11시</td>
+              </tr>
+              <tr>
+                <td>6교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>7교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">12시</td>
+              </tr>
+              <tr>
+                <td>8교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>9교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">오후1시</td>
+              </tr>
+              <tr>
+                <td>10교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>11교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">오후2시</td>
+              </tr>
+              <tr>
+                <td>12교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>13교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">오후3시</td>
+              </tr>
+              <tr>
+                <td>14교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>15교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">오후4시</td>
+              </tr>
+              <tr>
+                <td>16교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>17교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">오후5시</td>
+              </tr>
+              <tr>
+                <td>18교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>19교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">오후6시</td>
+              </tr>
+              <tr>
+                <td>20교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>21교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">오후7시</td>
+              </tr>
+              <tr>
+                <td>22교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>23교시</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>오후8시</td>
+              </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
