@@ -11,19 +11,32 @@
 
     <div class="row">
         {% if board_post.category != 2 %}
-        <div class="col-md-1" style="float:left; margin-right:40px;">{{board_post.user}}</div>
+        <div class="col-md-1" style="float:left; margin-right:40px;">{{board_post.user.nickname}}</div>
         {% else %}
         <div class="col-md-1" style="float:left; margin-right:40px;">익명  </div>
         {% endif %}
 
         <div class="col-md-4" style="margin-right:100px;">{{board_post.date}}</div>
-        <div class="col-md-2" style="margin-right:20px; margin-left:120px;">조회수: {{board_post.Field}}회</div>
+        <div class="col-md-2" style="margin-left:100px;">조회수: {{board_post.Field}}회</div>
+
+        <!--삭제버튼-->
         {% if request.user == board_post.user %}
-        <span class="btn btn-danger" onclick = "location.href = '/board/{{whatboard}}/{{board_post.pk}}/del'" style="margin-right:5px;">삭제</span>
-        <span class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" >목록으로</span>
+        <button class="btn btn-default" style="border: 1px solid;" onclick = "location.href = '/board/{{whatboard}}/{{board_post.pk}}/edit'">수정</button>
+        <button class="btn btn-danger" onclick = "alert_delete_post()" style="margin-right:5px; margin-left:5px">삭제</button>
+
+        <script>
+         function alert_delete_post(){
+             if(confirm("글을 지우시겠습니까?"))
+             {
+              location.href = "/board/{{whatboard}}/{{board_post.pk}}/del"
+             }
+         }
+        </script>
+
+        <button class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" >목록으로</button>
 
         {% else %}
-        <span class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" style="margin-left:70px;">목록으로</span>
+        <button class="btn btn-info" onclick = "location.href = '/board/{{whatboard}}/?page={{request.session.page}}'" style="margin-left:130px;">목록으로</button>
         {% endif %}
     </div>
 
@@ -73,11 +86,25 @@
        {% endif %}
         <p>{{comments.content}}</p>
         <span class="small" style="color:gray;">{{ comments.date|timesince }}전</span>
+
+
+        {% if request.user == comments.user%}
+        <button class="btn btn-default float-right" style="border: 1px solid;" onclick = "alert_delete_comment()">삭제</button>
+
+        <script>
+         function alert_delete_comment(){
+             if(confirm("댓글을 지우시겠습니까?"))
+             {
+              location.href = "/board/{{whatboard}}/{{board_post.pk}}/comment/{{comments.id}}"
+             }
+         }
+        </script>
+        {% endif %}
         <hr>
     {% endfor %}
 
     <!--댓글 입력-->
-    <form action ="/board/{{whatboard}}/{{board_post.boardNum}}" method="POST" class="post-form">
+    <form action ="/board/{{whatboard}}/{{board_post.boardNum}}/" method="POST" class="post-form">
         <textarea cols="10" rows="2" placeholder="댓글을 입력하세요" class="form-control" name="content" style="border:0;margin-bottom:8px;"></textarea>
         {% csrf_token %}
         <button type="submit" class="btn btn-outline-dark btn-xs" style="margin-left:5px;"> 작성</button>
