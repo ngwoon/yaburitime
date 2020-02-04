@@ -24,12 +24,12 @@ def board(request, whatboard):
         categoryNum = 2
 
     elif whatboard == 'hot':
-        board_post = Post.objects.filter(recommendCount__gte=1).order_by('-boardNum')
+        board_post = Post.objects.filter(recommendCount__gte=1).order_by('-boardNum')  # 추천수 n개 이상만 게시판에 표현
         categorykr = '인기게시판'
         categoryNum = 3
 
     else:
-        return redirect('/board/free/')
+        return redirect('/board/free/')  # 없는 board로 접근시 자유게시판으로 자동 이동
 
     posts_of_page = 5  # 한 페이지당 나타낼 글의 개수
     paginator = Paginator(board_post, posts_of_page)
@@ -47,7 +47,7 @@ def board(request, whatboard):
     if pageposts.number + 2 >= pageposts.paginator.num_pages:
         is_lastpage_hide = True
 
-    request.session['page'] = pageposts.number
+    request.session['page'] = pageposts.number  # 세션으로 페이지네이션 정보 넘김
 
     context = {
         'board_post': board_post,
@@ -124,7 +124,7 @@ def postdetail(request, whatboard, pk):
         form = Commentform()
 
     board_post = Post.objects.get(pk=pk)
-    comment = Comment.objects.filter(whatpost=board_post).order_by('id')
+    comment = Comment.objects.filter(whatpost=board_post).order_by('date')
 
     if board_post.category == 1:
         categorykr = '자유게시판'
@@ -170,7 +170,7 @@ def unrecommend(request, whatboard, pk):
     for user in post.unrecommend.all():
         if user == request.user:
             post.unrecommend.remove(user)
-            break;
+            break
 
     if user != request.user:
         post.unrecommend.add(request.user)  # unrecommend: many to many field 에 현재 추천한 user 정보 입력
@@ -187,3 +187,46 @@ def deletepost(request, whatboard, pk):
         post.delete()
 
     return redirect('/board/{}'.format(whatboard))
+
+
+def deletecomment(request, whatboard, pk, commentnumber):
+    comment = Comment.objects.get(pk=commentnumber)
+    if request.user == comment.user:
+        comment.delete()
+
+    return redirect('/board/{}/{}'.format(whatboard, pk))
+
+
+def edit(request, whatboard, pk):
+    if whatboard == 'free':
+        changedwhatboard = '자유게시판'
+    elif whatboard == 'secret':
+        changedwhatboard = '비밀게시판'
+    elif whatboard == 'hot':
+        changedwhatboard = '인기게시판'
+
+    if request.method == "POST":
+
+        form = Postform(request.POST)
+        if form.is_valid():
+
+            thispost = Post.objects.get(pk=pk)
+            post = form.save(commit=False)
+            thispost.title = post.title
+            thispost.content = post.content
+            thispost.save()
+
+            return redirect('/board/{}/{}'.format(whatboard, pk))
+        else:
+            messages.error(request, '제목 또는 내용이 입력되지 않았습니다.')
+    else:
+        form = Postform()
+
+    context = {
+        'thispost': Post.objects.get(pk=pk),
+        'form': form,
+        'changedwhatboard': changedwhatboard,
+        'whatboard': whatboard,
+    }
+
+    return render(request, 'board/board_edit.html', context)

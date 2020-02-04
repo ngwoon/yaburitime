@@ -58,7 +58,7 @@
         </div>
 
         {% if board_posts.category != 2 %}
-        <span class="small" style="color:dark">{{board_posts.user}}</span>
+        <span class="small" style="color:dark">{{board_posts.user.nickname}}</span>
         {% else %}
         <span class="small" style="color:dark">익명  </span>
         {% endif %}

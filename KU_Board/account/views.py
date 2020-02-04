@@ -13,7 +13,7 @@ class SignIn(View):
         return render(request, 'account/signin.html')
 
     def post(self, request):
-        u = authenticate(username=request.POST['username'], password=request.POST['password'])
+        u = authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
         if u:
             login(request, user=u)
             return redirect('/board/free/')
