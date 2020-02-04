@@ -48,6 +48,14 @@ class SignUp(View):
             return HttpResponse('입력 형식이 잘못되었습니다. 글자 제한을 잘 지켜주세요')
 
 
+class MyPage(View):
+    def get(self, request):
+        return render(request, 'account/mypage_index.html')
+
+    def post(self, request):
+        return render(request, 'account/mypage_index.html')
+
+
 def signOut(request):
     logout(request)
     return redirect('home')
