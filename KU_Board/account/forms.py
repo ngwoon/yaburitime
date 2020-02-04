@@ -25,7 +25,7 @@ class SignUpForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)
-        user.set_password(self.cleaned_password2)
+        user.set_password(self.cleaned_password2())
         user.name = self.cleaned_data['name']
         user.nickname = self.cleaned_data['nickname']
         if commit:
