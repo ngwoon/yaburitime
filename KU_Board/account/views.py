@@ -12,7 +12,7 @@ class SignIn(View):
 
     def post(self, request):
         u = authenticate(username=request.POST['username'], password=request.POST['password'])
-        if u:
+        if u is not None:
             login(request, user=u)
             return redirect('/board/free/')
 
@@ -35,10 +35,25 @@ class SignUp(View):
                 return HttpResponse('닉네임 중복입니다.')
 
             form.save()
-            return redirect('/board/free')
+
+            u = authenticate(username=request.POST['username'], password=request.POST['password1'])
+            if u is not None:
+                login(request, user=u)
+                return redirect('/board/free/')
+
+            return redirect('home')
         else:
             print(form.errors)
             return HttpResponse('입력 형식이 잘못되었습니다. 글자 제한을 잘 지켜주세요')
+
+
+class MyPage(View):
+    def get(self, request):
+        return render(request, 'account/mypage_index.html')
+
+    def post(self, request):
+        return render(request, 'account/mypage_index.html')
+
 
 def signOut(request):
     logout(request)

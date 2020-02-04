@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3">
+        안녕
+    </div>
+
+    <div class="col-md-9">
+        <div class="container-fluid">
+            <table class="table table-striped">
+                <thead>
+                <h3 align="center">기본 정보</h3>
+                </thead>
+                <tr>
+                    <td>
+                        아이디
+                    </td>
+                    <td>
+                        {{ user.username }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        이름
+                    </td>
+                    <td>
+                        {{ user.name }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        닉네임
+                    </td>
+                    <td>
+                        {{ user.nickname }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
