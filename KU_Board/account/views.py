@@ -1,26 +1,22 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
-from .models import User
+from .models import CustomUser
 from .forms import SignUpForm
 from django.contrib.auth import login, authenticate, logout
 # Create your views here.
-
 
 class SignIn(View):
     def get(self, request):
         return render(request, 'account/signin.html')
 
     def post(self, request):
-
-        u = authenticate(username=request.POST['id'], password=request.POST['pw'])
-
+        u = authenticate(username=request.POST['username'], password=request.POST['password'])
         if u:
             login(request, user=u)
             return redirect('/board/free/')
 
         return render(request, 'account/signin.html')
-
 
 class SignUp(View):
     def get(self, request):
@@ -30,11 +26,19 @@ class SignUp(View):
     def post(self, request):
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('board')
-        else:
-            return HttpResponse('사용자명이 이미 존재합니다.')
+            id_dup = CustomUser.objects.filter(username=form.cleaned_data['username'])
+            nickname_dup = CustomUser.objects.filter(nickname=form.cleaned_data['nickname'])
+            
+            if id_dup==None:
+                return HttpResponse('아이디 중복입니다.')
+            if nickname_dup == None:
+                return HttpResponse('닉네임 중복입니다.')
 
+            form.save()
+            return redirect('/board/free')
+        else:
+            print(form.errors)
+            return HttpResponse('입력 형식이 잘못되었습니다. 글자 제한을 잘 지켜주세요')
 
 def signOut(request):
     logout(request)
