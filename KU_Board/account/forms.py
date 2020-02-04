@@ -3,6 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
 
+
 class SignUpForm(UserCreationForm):
     name = forms.TextInput()
     nickname = forms.TextInput()
@@ -25,7 +26,7 @@ class SignUpForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)
-        user.set_password(self.cleaned_password2)
+        user.set_password(self.cleaned_password2())
         user.name = self.cleaned_data['name']
         user.nickname = self.cleaned_data['nickname']
         if commit:

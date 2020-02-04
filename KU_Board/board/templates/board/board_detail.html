@@ -11,7 +11,7 @@
 
     <div class="row">
         {% if board_post.category != 2 %}
-        <div class="col-md-1" style="float:left; margin-right:40px;">{{board_post.user}}</div>
+        <div class="col-md-1" style="float:left; margin-right:40px;">{{board_post.user.nickname}}</div>
         {% else %}
         <div class="col-md-1" style="float:left; margin-right:40px;">익명  </div>
         {% endif %}
