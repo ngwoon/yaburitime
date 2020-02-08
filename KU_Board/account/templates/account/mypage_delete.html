@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3">
+        <br>
+        <button type="button" class="btn btn-info btn-lg btn-dark"
+            onclick= "location.href='/account/update/'">회원정보 수정</button>
+
+        <br>
+        <br>
+
+        <button type="button" class="btn btn-info btn-lg btn-dark"
+            onclick= "location.href='/account/delete/'" disabled="disabled">회원탈퇴</button><br>
+    </div>
+
+    <div class="col-md-9">
+        <div class="container-fluid">
+            <table class="table table-striped">
+                <thead>
+                <br>
+                    <h3 align="center">회원탈퇴</h3>
+                <br>
+                </thead>
+                <form action="../delete/" method="POST">
+                    {% csrf_token %}
+                    <tr>
+                        <p style="text-align: center;">
+                          <img src = "/static/image/profile_image.png" width="120px" height="120px">
+                        </p>
+                    </tr>
+
+                    <h1 style="text-align:center">정말로 탈퇴하시겠습니까?</h1>
+                    <br>
+                    <p style="text-align:right">
+                        <input type="submit" value="탈퇴">
+                    </p>
+                </form>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
