@@ -6,7 +6,7 @@
 
 <div class="col-md-5">
 
-    <table class="table table-bordered" id="caculator-table">
+    <table class="table table-bordered" id="table1">
         <tr style="text-align:center;">
             <th style="width:50px;">과목</th>
             <th style="width:50px;">점수</th>
@@ -14,6 +14,32 @@
             <th>전공</th>
         </tr>
 
+        <tr id="tr1">
+            <td style="height: 0px; padding:0px;">
+                <input type="text" style="border: 0px; height:50px; font-size:15px; text-align: center;" id="input1">
+            </td>
+            <td>
+                <select name="선택">
+                    <option value="선택">선택</option>
+                    <option value="A+">A+</option>
+                    <option value="A">A</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="D+">D+</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                </select>
+            </td>
+            <td style="padding: 0px;">
+                <input type="text" style="width:60px; border: 0px; height:50px; font-size:15px; text-align: center;" id="input2">
+            </td>
+            <td>
+                <input type="checkbox" style="width:50px; border: 0px;" id="input3">
+            </td>
+        </tr>
+
         <tr>
             <td style="height: 0px; padding:0px;">
                 <input type="text" style="border: 0px; height:50px; font-size:15px; text-align: center;">
@@ -33,7 +59,7 @@
                 </select>
             </td>
             <td style="padding: 0px;">
-                <input type="text" style="width:60px; border: 0px; height:50px; font-size:20px; text-align: center;">
+                <input type="text" style="width:60px; border: 0px; height:50px; font-size:15px; text-align: center;">
             </td>
             <td>
                 <input type="checkbox" style="width:50px; border: 0px;">
@@ -59,33 +85,7 @@
                 </select>
             </td>
             <td style="padding: 0px;">
-                <input type="text" style="width:60px; border: 0px; height:50px; font-size:20px; text-align: center;">
-            </td>
-            <td>
-                <input type="checkbox" style="width:50px; border: 0px;">
-            </td>
-        </tr>
-
-        <tr>
-            <td style="height: 0px; padding:0px;">
-                <input type="text" style="border: 0px; height:50px; font-size:15px; text-align: center;">
-            </td>
-            <td>
-                <select name="선택">
-                    <option value="선택">선택</option>
-                    <option value="A+">A+</option>
-                    <option value="A">A</option>
-                    <option value="B+">B+</option>
-                    <option value="B">B</option>
-                    <option value="C+">C+</option>
-                    <option value="C">C</option>
-                    <option value="D+">D+</option>
-                    <option value="D">D</option>
-                    <option value="F">F</option>
-                </select>
-            </td>
-            <td style="padding: 0px;">
-                <input type="text" style="width:60px; border: 0px; height:50px; font-size:20px; text-align: center;">
+                <input type="text" style="width:60px; border: 0px; height:50px; font-size:15px; text-align: center;">
             </td>
             <td>
                 <input type="checkbox" style="width:50px; border: 0px;">
@@ -98,21 +98,30 @@
     <button class="btn btn-success float-right" id="add-sub" onclick="addsub()">과목추가</button>
 
     <script>
-            function addsub() {
-            var table1 = document.getElementById("caculator-table");
-            var tr = document.createElement("tr");
-            var td1 = document.createElement("td");
-            var td2 = document.createElement("td");
-            var td3 = document.createElement("td");
-            var td4 = document.createElement("td");
-            tr.appendChild(td1);
-            tr.appendChild(td2);
-            tr.appendChild(td3);
-            tr.appendChild(td4);
-            table1.firstChild.appendChild(tr);
-            }
+
+     fncRowReset = function(obj){
+            $(obj).find(':input').each(function(){
+                  this.text = '';
+                  this.checked = '';
+            });
+     };
+
+
+    function addsub() {
+
+        var table = document.getElementById("table1");
+        var tr = document.getElementById("tr1");
+        var newtr = tr.cloneNode(true);
+        console.log(newtr);
+        table.appendChild(newtr);
+
+
+
+    }
     </script>
 
+
 </div>
+
 
 {% endblock content %}
