@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br> <h2>{{counter}} 님과의 대화</h2>
+    <br><br><br>
+    {% for msg in msg_list %}
+        {% if msg.type == 'send' %}
+            <div style="text-align:left; color:red;">{{msg.content}}</div> <br>
+        {% else %}
+            <div style="text-align:right; color:blue;">{{msg.content}}</div> <br>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}
