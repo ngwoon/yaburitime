@@ -8,18 +8,22 @@
             <table class="table table-striped">
                 <thead>
                 <br>
-                    <h3 align="left">쪽지함</h3>
+                    <h1 align="left">쪽지함</h1>
+                    <div align="right">
+                        <button type="button" class="btn btn-danger" onclick="location.href='/account/sendmsg/'">쪽지 보내기</button>
+                    </div>
                 <br>
                 </thead>
+                    <form action="/account/msg/" method="post">
                     {% for counter in msg_counters %}
                         {%csrf_token%}
-                        <tr>
-                            <strong><input type="" value="{{counter}}"></strong> 님과의 대화
-                                <div style="text-align:right">
-                                    <button onclick="/account/msg/" formaction="" formmethod="post">확인하기</button>
-                                </div>
-                        </tr>
+                        <td>
+                            <strong>{{counter}}</strong> 님과의 메세지
+                            <input type="hidden" name="counter" value="{{counter}}">
+                            <div align="right"> <button type="submit">확인하기</button> </div>
+                        </td>
                     {% endfor %}
+                    </form>
             </table>
         </div>
     </div>

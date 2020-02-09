@@ -47,6 +47,10 @@ class SignUp(View):
         else:
             return HttpResponse('입력 형식이 잘못되었습니다. 글자 제한을 잘 지켜주세요')
 
+def signOut(request):
+    logout(request)
+    return redirect('home')
+
 
 class MyPage(View):
     def get(self, request):
@@ -111,6 +115,9 @@ class Msg(View):
         return render(request, 'account/msg_detail.html', {'msg_list' : messages, 'counter' : request.POST.get('counter')})
 
 
-def signOut(request):
-    logout(request)
-    return redirect('home')
+class SendMsg(View):
+    def get(self, request):
+        return render(request, 'account/msg_send.html')
+
+    def post(self, request):
+        pass
