@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .forms import SignUpForm, CustomUserChangeForm
-from .models import CustomUser
+from .models import CustomUser, Mail
 
 class CustomUserAdmin(UserAdmin):
     add_form = SignUpForm
@@ -12,3 +12,4 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Mail)

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="container-fluid">
+            <table class="table table-striped">
+                <thead>
+                <br>
+                    <h3 align="left">쪽지함</h3>
+                <br>
+                </thead>
+                    {% for counter in msg_counters %}
+                        {%csrf_token%}
+                        <tr>
+                            <strong><input type="" value="{{counter}}"></strong> 님과의 대화
+                                <div style="text-align:right">
+                                    <button onclick="/account/msg/" formaction="" formmethod="post">확인하기</button>
+                                </div>
+                        </tr>
+                    {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

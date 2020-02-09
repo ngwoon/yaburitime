@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
-from .models import CustomUser
+from .models import CustomUser, Mail
 from .forms import SignUpForm
 from django.contrib.auth import login, authenticate, logout
 # Create your views here.
@@ -46,6 +46,69 @@ class SignUp(View):
             return redirect('home')
         else:
             return HttpResponse('입력 형식이 잘못되었습니다. 글자 제한을 잘 지켜주세요')
+
+
+class MyPage(View):
+    def get(self, request):
+        if request.user.is_anonymous:
+            return redirect('/')
+        return render(request, 'account/mypage_index.html')
+
+    def post(self, request):
+        if request.user.is_anonymous:
+            return redirect('/')
+        return render(request, 'account/mypage_index.html')
+
+class Msg(View):
+    def get(self, request):
+        if request.user.is_anonymous:
+            return redirect('/')
+
+        send_list = Mail.objects.filter(owner=request.user)
+        receive_list = Mail.objects.filter(counter=request.user)
+
+        counters=[]
+
+        for msg in send_list:
+            if msg.counter not in counters:
+                counters.append(msg.counter)
+        for msg in receive_list:
+            if msg.owner not in counters:
+                counters.append(msg.owner)
+
+        return render(request, 'account/msg_index.html', {'msg_counters' : counters})
+
+    def post(self, request):
+        if request.user.is_anonymous:
+            return redirect('/')
+
+        counter = CustomUser.objects.get(nickname=request.POST.get('counter'))
+        send_list = Mail.objects.filter(owner=request.user, counter=counter).order_by('datetime')
+        receive_list = Mail.objects.filter(counter=request.user, owner=counter).order_by('datetime')
+        messages = []
+
+        slen = len(send_list)
+        rlen = len(receive_list)
+        sindex = 0
+        rindex = 0
+        while sindex != slen and rindex != rlen:
+            if send_list[sindex].datetime < receive_list[rindex].datetime:
+                messages.append({'content' : send_list[sindex].content, 'type' : 'send'})
+                sindex += 1
+            else:
+                messages.append({'content' : receive_list[rindex].content, 'type' : 'receive'})
+                rindex += 1
+
+        if sindex == slen:
+            while rindex != rlen:
+                messages.append({'content' : receive_list[rindex].content, 'type' : 'receive'})
+                rindex += 1
+        else:
+            while sindex != slen:
+                messages.append({'content' : send_list[sindex].content, 'type' : 'send'})
+                sindex += 1
+
+        return render(request, 'account/msg_detail.html', {'msg_list' : messages, 'counter' : request.POST.get('counter')})
 
 
 def signOut(request):
