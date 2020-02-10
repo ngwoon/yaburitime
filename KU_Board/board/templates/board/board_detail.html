@@ -105,20 +105,19 @@
 
     <!--댓글 입력-->
     <form action ="/board/{{whatboard}}/{{board_post.boardNum}}/" method="POST" class="post-form">
-        <textarea cols="10" rows="2" placeholder="댓글을 입력하세요" class="form-control" name="content" style="border:0;margin-bottom:8px;"></textarea>
+        <textarea id="commentarea" cols="10" rows="2" placeholder="댓글을 입력하세요" class="form-control" name="content" style="border:0;margin-bottom:8px;"></textarea>
         {% csrf_token %}
-        <button type="submit" class="btn btn-outline-dark btn-xs" style="margin-left:5px;"> 작성</button>
+        <button type="submit" class="btn btn-outline-dark btn-xs" style="margin-left:5px;" onclick = "alert_nf()"> 작성</button>
     </form>
     <br>
     <hr>
-
-    {% if messages %}
-    {% for message in messages %}
-        <script>
-            alert('{{ message }}')
-        </script>
-    {% endfor %}
-    {% endif %}
+    <script>
+        function alert_nf(){
+            var ca = document.getElementById("commentarea");
+            if(ca.value == "")  alert("내용을 입력해주세요!");
+            return false;
+        }
+    </script>
 
 </div>
 
