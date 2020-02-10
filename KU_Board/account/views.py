@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from .models import CustomUser, Mail
-from .forms import SignUpForm, CustomUserChangeForm
+from .forms import SignUpForm, SendForm
 from django.contrib.auth import login, authenticate, logout
 
 class SignIn(View):
@@ -113,10 +113,24 @@ class Msg(View):
 
 class SendMsg(View):
     def get(self, request):
-        return render(request, 'account/msg_send.html')
+        form = SendForm()
+        return render(request, 'account/msg_send.html', {'form' : form})
 
     def post(self, request):
-        pass
+        post_mutable = request.POST._mutable
+        request.POST._mutable = True
+        counter = CustomUser.objects.get(nickname=request.POST.get('counter'))
+        request.POST['counter'] = counter
+        request.POST._mutable = post_mutable
+
+        form = SendForm(request.POST)
+        if form.is_valid():
+            send = form.save(commit=False)
+            send.owner = request.user
+            send.save()
+            return redirect('home')
+        else:
+            return HttpResponse(form.cleaned_data)
 
 
 def update(request):
