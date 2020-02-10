@@ -40,82 +40,21 @@
             </td>
         </tr>
 
-        <tr>
-            <td style="height: 0px; padding:0px;">
-                <input type="text" style="border: 0px; height:50px; font-size:15px; text-align: center;">
-            </td>
-            <td>
-                <select name="선택">
-                    <option value="선택">선택</option>
-                    <option value="A+">A+</option>
-                    <option value="A">A</option>
-                    <option value="B+">B+</option>
-                    <option value="B">B</option>
-                    <option value="C+">C+</option>
-                    <option value="C">C</option>
-                    <option value="D+">D+</option>
-                    <option value="D">D</option>
-                    <option value="F">F</option>
-                </select>
-            </td>
-            <td style="padding: 0px;">
-                <input type="text" style="width:60px; border: 0px; height:50px; font-size:15px; text-align: center;">
-            </td>
-            <td>
-                <input type="checkbox" style="width:50px; border: 0px;">
-            </td>
-        </tr>
-
-        <tr>
-            <td style="height: 0px; padding:0px;">
-                <input type="text" style="border: 0px; height:50px; font-size:15px; text-align: center;">
-            </td>
-            <td>
-                <select name="선택">
-                    <option value="선택">선택</option>
-                    <option value="A+">A+</option>
-                    <option value="A">A</option>
-                    <option value="B+">B+</option>
-                    <option value="B">B</option>
-                    <option value="C+">C+</option>
-                    <option value="C">C</option>
-                    <option value="D+">D+</option>
-                    <option value="D">D</option>
-                    <option value="F">F</option>
-                </select>
-            </td>
-            <td style="padding: 0px;">
-                <input type="text" style="width:60px; border: 0px; height:50px; font-size:15px; text-align: center;">
-            </td>
-            <td>
-                <input type="checkbox" style="width:50px; border: 0px;">
-            </td>
-        </tr>
-
-
     </table>
 
     <button class="btn btn-success float-right" id="add-sub" onclick="addsub()">과목추가</button>
 
     <script>
 
-     fncRowReset = function(obj){
-            $(obj).find(':input').each(function(){
-                  this.text = '';
-                  this.checked = '';
-            });
-     };
-
-
     function addsub() {
+
+        // id를 계속 바꿔주자 1번부터 변수로 처리해서 바꿔주자
 
         var table = document.getElementById("table1");
         var tr = document.getElementById("tr1");
         var newtr = tr.cloneNode(true);
         console.log(newtr);
         table.appendChild(newtr);
-
-
 
     }
     </script>

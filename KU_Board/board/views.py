@@ -119,7 +119,7 @@ def postdetail(request, whatboard, pk):
     elif whatboard == 'hot':
         categoryNum = 3
 
-    if request.method == "POST":
+    if request.method == "POST":  # 댓글달기
         form = Commentform(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
@@ -129,8 +129,8 @@ def postdetail(request, whatboard, pk):
             comment.save()
 
             return redirect('/board/{}/{}'.format(whatboard, pk))
-        else:
-            messages.error(request, '내용을 입력해주세요')
+        # else:
+        #     messages.error(request, '내용을 입력해주세요')
     else:
         form = Commentform()
 
