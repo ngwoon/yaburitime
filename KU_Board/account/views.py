@@ -2,10 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from .models import CustomUser
-from .forms import SignUpForm
+from .forms import SignUpForm, CustomUserChangeForm
 from django.contrib.auth import login, authenticate, logout
-# Create your views here.
-
 
 class SignIn(View):
 
@@ -58,6 +56,23 @@ class MyPage(View):
         if request.user.is_anonymous:
             return redirect('/')
         return render(request, 'account/mypage_index.html')
+
+
+def update(request):
+    if request.method == "POST":
+        user = request.user
+        user.name = request.POST["name"]
+        user.nickname = request.POST["nickname"]
+        user.save()
+        return redirect('/')
+    return render(request, 'account/mypage_update.html')
+
+
+def delete(request):
+    if request.method == "POST":
+        request.user.delete()
+        return redirect('/')
+    return render(request, 'account/mypage_delete.html')
 
 
 def signOut(request):
