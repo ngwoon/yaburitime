@@ -23,6 +23,8 @@ urlpatterns = [
     path('signout/', views.signOut, name='signout'),
     path('signup/', views.SignUp.as_view(), name='signup'),
     path('mypage/', views.MyPage.as_view(), name='mypage'),
+    path('msg/', views.Msg.as_view(), name='msg'),
+    path('sendmsg/', views.SendMsg.as_view(), name='sendmsg'),
     path('update/', views.update, name='update'),
     path('delete/', views.delete, name='delete'),
 ]

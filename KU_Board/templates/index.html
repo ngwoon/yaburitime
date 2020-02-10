@@ -35,7 +35,7 @@
         <div class="col-md-4" align="middle">
             {% if user.username %}
             <button type="button" class="btn btn-info btn-lg btn-block"
-                    onclick= "location.href='/account/signout/'" class="save btn btn-light">로그아웃</button><br>
+                    onclick= "location.href='/account/signout/'" class="save btn btn-light">{{user.nickname}} 님, 로그아웃</button><br>
             {% else %}
 
             <button type="button" class="btn btn-info btn-lg btn-block"
