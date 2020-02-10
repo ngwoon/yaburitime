@@ -2,10 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from .models import CustomUser, Mail
-from .forms import SignUpForm
+from .forms import SignUpForm, CustomUserChangeForm
 from django.contrib.auth import login, authenticate, logout
-# Create your views here.
-
 
 class SignIn(View):
 
@@ -50,7 +48,6 @@ class SignUp(View):
 def signOut(request):
     logout(request)
     return redirect('home')
-
 
 class MyPage(View):
     def get(self, request):
@@ -121,3 +118,20 @@ class SendMsg(View):
 
     def post(self, request):
         pass
+
+
+def update(request):
+    if request.method == "POST":
+        user = request.user
+        user.name = request.POST["name"]
+        user.nickname = request.POST["nickname"]
+        user.save()
+        return redirect('/')
+    return render(request, 'account/mypage_update.html')
+
+
+def delete(request):
+    if request.method == "POST":
+        request.user.delete()
+        return redirect('/')
+    return render(request, 'account/mypage_delete.html')
