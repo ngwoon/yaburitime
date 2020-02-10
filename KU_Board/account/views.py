@@ -5,6 +5,7 @@ from .models import CustomUser, Mail
 from .forms import SignUpForm, CustomUserChangeForm
 from django.contrib.auth import login, authenticate, logout
 
+
 class SignIn(View):
     def get(self, request):
         return render(request, 'account/signin.html')

@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'calculator.apps.CalculatorConfig',
+    'timetable.apps.TimetableConfig',
     'board.apps.BoardConfig',
     'account.apps.AccountConfig',
     'django.contrib.admin',
