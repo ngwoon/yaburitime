@@ -2,13 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from .models import CustomUser, Mail
-from .forms import SignUpForm
+from .forms import SignUpForm, SendForm
 from django.contrib.auth import login, authenticate, logout
-# Create your views here.
-
 
 class SignIn(View):
-
     def get(self, request):
         return render(request, 'account/signin.html')
 
@@ -50,7 +47,6 @@ class SignUp(View):
 def signOut(request):
     logout(request)
     return redirect('home')
-
 
 class MyPage(View):
     def get(self, request):
@@ -117,7 +113,37 @@ class Msg(View):
 
 class SendMsg(View):
     def get(self, request):
-        return render(request, 'account/msg_send.html')
+        form = SendForm()
+        return render(request, 'account/msg_send.html', {'form' : form})
 
     def post(self, request):
-        pass
+        post_mutable = request.POST._mutable
+        request.POST._mutable = True
+        counter = CustomUser.objects.get(nickname=request.POST.get('counter'))
+        request.POST['counter'] = counter
+        request.POST._mutable = post_mutable
+
+        form = SendForm(request.POST)
+        if form.is_valid():
+            send = form.save(commit=False)
+            send.owner = request.user
+            send.save()
+            return redirect('home')
+        else:
+            return HttpResponse(form.cleaned_data)
+
+def update(request):
+    if request.method == "POST":
+        user = request.user
+        user.name = request.POST["name"]
+        user.nickname = request.POST["nickname"]
+        user.save()
+        return redirect('/')
+    return render(request, 'account/mypage_update.html')
+
+
+def delete(request):
+    if request.method == "POST":
+        request.user.delete()
+        return redirect('/')
+    return render(request, 'account/mypage_delete.html')

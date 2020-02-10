@@ -1,7 +1,8 @@
 # users/forms.py
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser
+from django.contrib.auth import get_user_model
+from .models import CustomUser, Mail
 
 
 class SignUpForm(UserCreationForm):
@@ -36,5 +37,11 @@ class SignUpForm(UserCreationForm):
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
-        model = CustomUser
+        model = get_user_model()
         fields = ('username', 'password', 'name', 'nickname')
+
+
+class SendForm(forms.ModelForm):
+    class Meta:
+        model = Mail
+        fields = ('counter','content')
