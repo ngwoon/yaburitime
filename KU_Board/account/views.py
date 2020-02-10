@@ -132,7 +132,6 @@ class SendMsg(View):
         else:
             return HttpResponse(form.cleaned_data)
 
-
 def update(request):
     if request.method == "POST":
         user = request.user
