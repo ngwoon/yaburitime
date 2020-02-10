@@ -5,6 +5,8 @@ from .models import CustomUser, Mail
 from .forms import SignUpForm, SendForm
 from django.contrib.auth import login, authenticate, logout
 
+from django.core.exceptions import ObjectDoesNotExist
+
 class SignIn(View):
     def get(self, request):
         return render(request, 'account/signin.html')
@@ -119,9 +121,13 @@ class SendMsg(View):
     def post(self, request):
         post_mutable = request.POST._mutable
         request.POST._mutable = True
-        counter = CustomUser.objects.get(nickname=request.POST.get('counter'))
-        request.POST['counter'] = counter
-        request.POST._mutable = post_mutable
+
+        try:
+            counter = CustomUser.objects.get(nickname=request.POST.get('counter'))
+            request.POST['counter'] = counter
+            request.POST._mutable = post_mutable
+        except ObjectDoesNotExist:
+            return HttpResponse('해당 닉네임을 가진 사용자는 존재하지 않습니다.')
 
         form = SendForm(request.POST)
         if form.is_valid():
@@ -130,7 +136,7 @@ class SendMsg(View):
             send.save()
             return redirect('home')
         else:
-            return HttpResponse(form.cleaned_data)
+            return HttpResponse('상대 닉네임과 내용은 필수 항목입니다. 상대 닉네임과 내용을 채웠음에도 오류가 발생한다면 관리자에게 문의 바랍니다.')
 
 def update(request):
     if request.method == "POST":
