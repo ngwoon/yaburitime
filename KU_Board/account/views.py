@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from .models import CustomUser, Mail
-from .forms import SignUpForm, CustomUserChangeForm
+from .forms import SignUpForm, SendForm
 from django.contrib.auth import login, authenticate, logout
 
+from django.core.exceptions import ObjectDoesNotExist
 
 class SignIn(View):
     def get(self, request):
@@ -114,11 +115,28 @@ class Msg(View):
 
 class SendMsg(View):
     def get(self, request):
-        return render(request, 'account/msg_send.html')
+        form = SendForm()
+        return render(request, 'account/msg_send.html', {'form' : form})
 
     def post(self, request):
-        pass
+        post_mutable = request.POST._mutable
+        request.POST._mutable = True
 
+        try:
+            counter = CustomUser.objects.get(nickname=request.POST.get('counter'))
+            request.POST['counter'] = counter
+            request.POST._mutable = post_mutable
+        except ObjectDoesNotExist:
+            return HttpResponse('해당 닉네임을 가진 사용자는 존재하지 않습니다.')
+
+        form = SendForm(request.POST)
+        if form.is_valid():
+            send = form.save(commit=False)
+            send.owner = request.user
+            send.save()
+            return redirect('home')
+        else:
+            return HttpResponse('상대 닉네임과 내용은 필수 항목입니다. 상대 닉네임과 내용을 채웠음에도 오류가 발생한다면 관리자에게 문의 바랍니다.')
 
 def update(request):
     if request.method == "POST":
