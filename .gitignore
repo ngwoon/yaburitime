@@ -1,7 +1,7 @@
-venv
+../venv
 .idea
 *.log
 *.pot
 *.pyc
 __pycache__
-local_settings.py
+KU_Board/local_settings.py

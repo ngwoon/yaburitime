@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.account(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -79,7 +80,8 @@ WSGI_APPLICATION = 'KU_Board.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'yaburitime',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'USER': 'name',
         'PASSWORD': '',
         'HOST': 'localhost',
@@ -87,6 +89,8 @@ DATABASES = {
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -106,8 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+
 
 # Close the session when user closes the browser
 # SESSION_EXPIRE_AT_BROWSER_CLOSE = True
