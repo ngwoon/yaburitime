@@ -1,0 +1,1 @@
+web: gunicorn KU_Board.wsgi --log-file -
