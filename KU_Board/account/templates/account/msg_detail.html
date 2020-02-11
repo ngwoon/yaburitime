@@ -10,12 +10,20 @@
     <br><br><br>
     {% for msg in msg_list %}
         {% if msg.owner.nickname == user.nickname %}
-        <div style="text-align:left; color:red;"><h3><span class="label label-default">{{msg.content}}</span></h3></div> <br>
-        <div style="text-align:left; color:red;"><h6>{{msg.datetime}}</h6></div> <br>
+            <div style="text-align:left; color:red;">
+                <h3><span class="label label-info">{{msg.content}}</span></h3>
+                <div style="text-align:left; color:blue; margin-top:5px;">
+                    <h6>{{msg.datetime}}</h6>
+                </div> <br>
+            </div> <br>
 
         {% else %}
-        <div style="text-align:right; color:blue;"><h3><span class="label label-danger">{{msg.content}}</span></h3></div> <br>
-        <div style="text-align:right; color:blue;"><h6>{{msg.datetime}}</h6></div> <br>
+            <div style="text-align:right; color:blue;">
+                <h3><span class="label label-danger">{{msg.content}}</span></h3>
+                <div style="text-align:right; color:red; margin-top:5px;">
+                    <h6>{{msg.datetime}}</h6>
+                </div> <br>
+            </div> <br>
         {% endif %}
     {% endfor %}
 {% endblock content %}
