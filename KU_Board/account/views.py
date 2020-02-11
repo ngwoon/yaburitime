@@ -147,6 +147,7 @@ def update(request):
         user = request.user
         user.name = request.POST["name"]
         user.nickname = request.POST["nickname"]
+        user.set_password(request.POST['password'])
         user.save()
         return redirect('/')
     return render(request, 'account/mypage_update.html')
