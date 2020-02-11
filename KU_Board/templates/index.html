@@ -9,48 +9,47 @@
 </head>
 <body>
 
-
-<div class="container-fluid">
-    <div class="card-title" align="middle">
-        <h1>야부리타임</h1>
+<div class="card text-center">
+    <div class="card-header">
+        <br>
     </div>
-
-    <div class="row">
-        <div class="col-md-8">
-            <div class="span2">
-                여기에는 홈페이지 소개 내용이 들어갈 것 <br>
-                크기를 잡을 텍스트<br>
-                크기를 잡을 텍스트<br>
-                크기를 잡을 텍스트<br>
-                크기를 잡을 텍스트<br>
-                크기를 잡을 텍스트<br>
-                크기를 잡을 텍스트<br>
-                크기를 잡을 텍스트<br>
-                크기를 잡을 텍스트<br>
-                크기를 잡을 텍스트<br>
-                크기를 잡을 텍스트<br>
-            </div>
-        </div>
-
-        <div class="col-md-4" align="middle">
-            {% if user.username %}
-            <button type="button" class="btn btn-info btn-lg btn-block"
-                    onclick= "location.href='/account/signout/'" class="save btn btn-light">{{user.nickname}} 님, 로그아웃</button><br>
-            {% else %}
-
-            <button type="button" class="btn btn-info btn-lg btn-block"
-                    onclick= "location.href='/account/signin/'" class="save btn btn-light">로그인</button><br>
-            {% endif %}
-            {% if not user.username %}
-            <button type="button" class="btn btn-info btn-lg btn-block"
-                    onclick= "location.href='/account/signup/'" class="save btn btn-light">야부리타임 회원가입</button>
-            {% endif %}
-        </div>
+    <div class="card-body">
+        <h1 class="card-title">야부리타임</h1>
+        <p class="card-text">에브리타임 클론 코딩</p>
     </div>
-
+    <div class="card-footer text-muted">
+        <br>
+    </div>
 </div>
 
-
+<div id="main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 bg-light" align="middle">
+                <div class="container">
+                    <h1>Header Resize On Scroll with Animations</h1>
+                    <p>Cupcake ipsum dolor sit amet lollipop. Macaroon candy cotton candy bear claw macaroon carrot cake pastry icing dessert. Cupcake pastry tart sesame snaps lollipop donut pie. Cookie apple pie toffee lemon drops jelly beans cheesecake sweet roll. Jelly-o soufflé donut candy canes wafer dragée sweet cheesecake. Macaroon caramels pie cookie gummi bears. Ice cream jelly-o toffee cookie gingerbread cookie. Soufflé fruitcake jelly-o jelly chupa chups jelly beans. Dragée marzipan pastry macaroon oat cake muffin soufflé topping liquorice. Jelly-o chocolate cake lollipop.</p>
+                    <p>Sugar plum muffin cookie pastry oat cake icing candy canes chocolate. Gummi bears chupa chups fruitcake dessert jelly. Muffin cookie ice cream soufflé pastry lollipop gingerbread sweet. Unerdwear.com bonbon candy marzipan bonbon gummies chocolate cake gummi bears powder. Unerdwear.com tart halvah chocolate cake dragée liquorice. Sugar plum chocolate bar pastry liquorice dragée jelly powder. Jelly tootsie roll applicake caramels. Marzipan candy tootsie roll donut. Gummies ice cream macaroon applicake.</p>
+                    <p>
+                        <a href="https://github.com/ngwoon/KU_Board">Github</a><br>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4" align="middle">
+                <section>
+                    <br>
+                    <br>
+                </section>
+                <section>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block"
+                            onclick= "location.href='/account/signin/'">로그인</button><br>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block"
+                            onclick= "location.href='/account/signup/'">야부리타임 회원가입</button>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
