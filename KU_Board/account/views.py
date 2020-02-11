@@ -119,6 +119,9 @@ class SendMsg(View):
         return render(request, 'account/msg_send.html', {'form' : form})
 
     def post(self, request):
+        if request.POST.get('counter') == request.user.nickname:
+            return HttpResponse('자기 자신에게는 쪽지를 보낼 수 없습니다.')
+
         post_mutable = request.POST._mutable
         request.POST._mutable = True
 
@@ -126,6 +129,7 @@ class SendMsg(View):
             counter = CustomUser.objects.get(nickname=request.POST.get('counter'))
             request.POST['counter'] = counter
             request.POST._mutable = post_mutable
+
         except ObjectDoesNotExist:
             return HttpResponse('해당 닉네임을 가진 사용자는 존재하지 않습니다.')
 
