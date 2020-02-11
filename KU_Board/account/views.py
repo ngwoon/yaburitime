@@ -95,19 +95,19 @@ class Msg(View):
         rindex = 0
         while sindex != slen and rindex != rlen:
             if send_list[sindex].datetime < receive_list[rindex].datetime:
-                messages.append({'content' : send_list[sindex].content, 'type' : 'send'})
+                messages.append(send_list[sindex])
                 sindex += 1
             else:
-                messages.append({'content' : receive_list[rindex].content, 'type' : 'receive'})
+                messages.append(receive_list[rindex])
                 rindex += 1
 
         if sindex == slen:
             while rindex != rlen:
-                messages.append({'content' : receive_list[rindex].content, 'type' : 'receive'})
+                messages.append(receive_list[rindex])
                 rindex += 1
         else:
             while sindex != slen:
-                messages.append({'content' : send_list[sindex].content, 'type' : 'send'})
+                messages.append(send_list[sindex])
                 sindex += 1
 
         return render(request, 'account/msg_detail.html', {'msg_list' : messages, 'counter' : request.POST.get('counter')})
