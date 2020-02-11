@@ -1,58 +1,72 @@
-
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-
-<title>KU_Board 회원가입</title>
-
-  <style>
-
- h, td, tr, input, textarea, select, FORM
- {
-   font-family:고딕;
-  font-size:1em;
-  border-radius:5px;
-
- }
-
- table, FORM
- {
-  border:1px solid rgba(36, 228, 172, 0.29);
-  border-spacing:15px;
- }
-
-  </style>
-
+	<title>Sign up</title>
+	{% load static %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
 </head>
-<body style="background-color:#f0f5f3">
 
-<div class="card text-center">
-    <div class="card-header">
-        <br>
-    </div>
-    <div class="card-body">
-        <h1 class="card-title">야부리타임</h1>
-        <p class="card-text">에브리타임 클론 코딩</p>
-    </div>
-    <div class="card-footer text-muted">
-        <br>
+<body>
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" action="/account/signup/" method="post">
+                {% csrf_token %}
+                <span class="login100-form-title p-b-26">
+                    Yaburitime
+                </span>
+
+                <div class="text-left p-t-115">
+                    <span class="txt1">
+                        {% for field in form %}
+                            <p class="txt2">
+                                {{ field.label_tag }}
+                            </p>
+                            <p class="txt2">
+                                {{ field }}
+                            </p>
+                        {% endfor %}
+                    </span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn" type="submit">
+                            회원가입
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
 
- <center>
-
-  <form action="/account/signup/" method="post">
-  {%csrf_token%}
-      {{form.as_p}}
-<br/>
-    <input type = "submit" value = "가입하기">
-    <input type = "reset" value = "다시 입력">
-  </form>
-
-</center>
 </body>
 </html>
 
