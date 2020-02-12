@@ -25,6 +25,7 @@ urlpatterns = [
     path('mypage/', views.MyPage.as_view(), name='mypage'),
     path('msg/', views.Msg.as_view(), name='msg'),
     path('sendmsg/', views.SendMsg.as_view(), name='sendmsg'),
+    path('deletemsg/', views.DeleteMsg.as_view(), name='deletemsg'),
     path('update/', views.update, name='update'),
     path('delete/', views.delete, name='delete'),
 ]

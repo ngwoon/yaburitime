@@ -66,17 +66,17 @@ class Msg(View):
         if request.user.is_anonymous:
             return redirect('/')
 
-        send_list = Mail.objects.filter(owner=request.user)
-        receive_list = Mail.objects.filter(counter=request.user)
+        send_list = Mail.objects.filter(sender=request.user.nickname)
+        receive_list = Mail.objects.filter(receiver=request.user.nickname)
 
         counters=[]
 
         for msg in send_list:
-            if msg.counter not in counters:
-                counters.append(msg.counter)
+            if msg.receiver not in counters:
+                counters.append(msg.receiver)
         for msg in receive_list:
-            if msg.owner not in counters:
-                counters.append(msg.owner)
+            if msg.sender not in counters:
+                counters.append(msg.sender)
 
         return render(request, 'account/msg_index.html', {'msg_counters' : counters})
 
@@ -84,9 +84,8 @@ class Msg(View):
         if request.user.is_anonymous:
             return redirect('/')
 
-        counter = CustomUser.objects.get(nickname=request.POST.get('counter'))
-        send_list = Mail.objects.filter(owner=request.user, counter=counter).order_by('datetime')
-        receive_list = Mail.objects.filter(counter=request.user, owner=counter).order_by('datetime')
+        send_list = Mail.objects.filter(sender=request.user.nickname).order_by('datetime')
+        receive_list = Mail.objects.filter(receiver=request.user.nickname).order_by('datetime')
         messages = []
 
         slen = len(send_list)
@@ -110,7 +109,7 @@ class Msg(View):
                 messages.append(send_list[sindex])
                 sindex += 1
 
-        return render(request, 'account/msg_detail.html', {'msg_list' : messages, 'counter' : request.POST.get('counter')})
+        return render(request, 'account/msg_detail.html', {'msg_list' : messages, 'counter': request.POST.get('counter')})
 
 
 class SendMsg(View):
@@ -119,28 +118,32 @@ class SendMsg(View):
         return render(request, 'account/msg_send.html', {'form' : form})
 
     def post(self, request):
-        if request.POST.get('counter') == request.user.nickname:
+        if request.POST.get('receiver') == request.user.nickname:
             return HttpResponse('자기 자신에게는 쪽지를 보낼 수 없습니다.')
-
-        post_mutable = request.POST._mutable
-        request.POST._mutable = True
-
+        # post_mutable = request.POST._mutable
+        # request.POST._mutable = True
         try:
-            counter = CustomUser.objects.get(nickname=request.POST.get('counter'))
-            request.POST['counter'] = counter
-            request.POST._mutable = post_mutable
-
+            receiver = CustomUser.objects.get(nickname=request.POST.get('receiver'))
+            # request.POST['receiver'] = receiver
+            # request.POST._mutable = post_mutable
         except ObjectDoesNotExist:
             return HttpResponse('해당 닉네임을 가진 사용자는 존재하지 않습니다.')
 
         form = SendForm(request.POST)
         if form.is_valid():
             send = form.save(commit=False)
-            send.owner = request.user
+            send.sender = request.user
             send.save()
             return redirect('home')
         else:
-            return HttpResponse('상대 닉네임과 내용은 필수 항목입니다. 상대 닉네임과 내용을 채웠음에도 오류가 발생한다면 관리자에게 문의 바랍니다.')
+            return HttpResponse(form.errors)
+
+class DeleteMsg(View):
+    def get(self, requset):
+        pass
+
+    def post(self, request):
+        pass
 
 def update(request):
     if request.method == "POST":
@@ -155,6 +158,21 @@ def update(request):
 
 def delete(request):
     if request.method == "POST":
+        send_list = Mail.objects.filter(sender=request.user.nickname)
+        receive_list = Mail.objects.filter(receiver=request.user.nickanem)
+
+        for msg in send_list:
+            if msg.receiver == "알수없음":
+                msg.delete()
+            else:
+                msg.sender = "알수없음"
+
+        for msg in receive_list:
+            if msg.sender == "알수없음":
+                msg.delete()
+            else:
+                msg.receiver = "알수없음"
+
         request.user.delete()
         return redirect('/')
     return render(request, 'account/mypage_delete.html')

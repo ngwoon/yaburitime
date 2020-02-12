@@ -44,4 +44,4 @@ class CustomUserChangeForm(UserChangeForm):
 class SendForm(forms.ModelForm):
     class Meta:
         model = Mail
-        fields = ('counter','content')
+        fields = ('receiver', 'content')
