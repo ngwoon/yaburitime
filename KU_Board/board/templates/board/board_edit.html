@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<br>
+<h2 class="text-center">{{changedwhatboard}}</h2>
+
+<table class="table">
+<br>
+
+    <tbody>
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            <tr>
+                <td><input type="text" placeholder="제목" name="title" class="form-control" style="border:0" value="{{thispost.title}}" /></td>
+            </tr>
+            <tr>
+                <td><textarea cols="70" rows="10" placeholder="내용" name="content" class="form-control" style="border:0">{{thispost.content}}</textarea></td>
+
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <button type="button" onclick= "location.href='/board/{{whatboard}}'" class="save btn btn-info float-right">목록으로</button>
+                    <button type="submit" class="save btn btn-info float-right" style="margin-right:10px">수정</button>
+                </td>
+            </tr>
+        </form>
+    </tbody>
+</table>
+
+{% if messages %}
+{% for message in messages %}
+
+    <div class="alert alert-danger alert-dismissible">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+
+<br><br><br><br>
+
+{% endblock content %}

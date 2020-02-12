@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3">
+        <br>
+        <button type="button" class="btn btn-info btn-lg btn-dark"
+            onclick= "location.href='/account/update/'">회원정보 수정</button>
+
+        <br>
+        <br>
+
+        <button type="button" class="btn btn-info btn-lg btn-dark"
+            onclick= "location.href='/account/delete/'">회원탈퇴</button><br>
+    </div>
+
+    <div class="col-md-9">
+        <div class="container-fluid">
+            <table class="table table-striped">
+                <thead>
+                <br>
+                    <h3 align="center">기본 정보</h3>
+                <br>
+                </thead>
+                <tr>
+                    <p style="text-align: center;">
+                      <img src = "/static/image/profile_image.png" width="120px" height="120px">
+                    </p>
+                </tr>
+                <tr>
+                        <td>
+                            <p style="text-align:center;">
+                                ID
+                            </p>
+                        </td>
+                        <td>
+                            <p style="text-align:center;">
+                            {{ user.username }}
+                            </p>
+                        </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="text-align:center;">
+                            이름
+                        </p>
+                    </td>
+                    <td>
+                        <p style="text-align:center;">
+                            {{ user.name }}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p style="text-align:center;">
+                            닉네임
+                        </p>
+                    </td>
+                    <td>
+                        <p style="text-align:center;">
+                            {{ user.nickname }}
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

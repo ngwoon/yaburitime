@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>학점계산기</h2>
+
+<div class="col-md-5">
+
+    <table class="table table-bordered" id="table1">
+        <tr style="text-align:center;">
+            <th style="width:50px;">과목</th>
+            <th style="width:50px;">점수</th>
+            <th style="width:50px;">학점</th>
+            <th>전공</th>
+        </tr>
+
+        <tr id="tr1">
+            <td style="height: 0px; padding:0px;">
+                <input type="text" style="width: 230px; border: 0px; height:50px; font-size:15px; text-align: center;">
+            </td>
+            <td>
+                <select name="선택" id="grade1">
+                    <option value="선택">선택</option>
+                    <option value="A+">A+</option>
+                    <option value="A">A</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="D+">D+</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                </select>
+            </td>
+            <td style="padding: 0px;">
+                <input type="text" style="width:60px; border: 0px; height:50px; font-size:15px; text-align: center;" id="credit1">
+            </td>
+            <td>
+                <input type="checkbox" style="width:50px; border: 0px;" id="is-major1">
+            </td>
+        </tr>
+
+    </table>
+
+
+    <button class="btn btn-info float-right" onclick="calculate()" style="margin-left: 7px;">계산</button>
+    <button class="btn btn-success float-right" id="add-sub" onclick="addsub()" style="margin-left: 7px;">과목추가</button>
+    <button class="btn btn-warning float-right" id="del-sub" onclick="delsub()">과목삭제</button>
+    <br><br>
+
+    <span id="average"></span>
+    &nbsp;
+    <span id="major-average"></span>
+    &nbsp;
+    <span id="credit"></span>
+    &nbsp;
+    <span id="major-count"></span>
+
+    <br><br>
+
+    <script>
+    var id_count = 2;
+
+    function addsub() {  // 과목 추가 버튼 메서드
+
+        var table = document.getElementById("table1");
+        var tr = document.getElementById("tr1");
+        var newtr = tr.cloneNode(true);
+        newtr.id = "tr"+id_count;
+
+        newtr.childNodes[1].childNodes[1].value = null;  // 초기화
+        newtr.childNodes[5].childNodes[1].value = null;  // 초기화
+        newtr.childNodes[7].childNodes[1].checked = false; // 초기화
+
+        newtr.childNodes[3].childNodes[1].id = "grade" + id_count;  // 각각 값들의 id 설정
+        newtr.childNodes[5].childNodes[1].id = "credit" + id_count;
+        newtr.childNodes[7].childNodes[1].id = "is-major" + id_count;
+
+        id_count++;
+        table.childNodes[1].appendChild(newtr);
+    }
+
+
+
+    function delsub() {
+        if(id_count < 3) return
+        var table = document.getElementById("table1");
+        var tr = document.getElementById("tr"+(id_count-1));
+        console.log(tr);
+        table.childNodes[1].removeChild(tr);
+        id_count -= 1;
+    }
+
+
+
+
+    function calculate() {   // 계산버튼 메서드 ★
+        var grade_average = calculate_grades();
+        var credit_sum = calculate_credits();
+        var major_grade_average = calculate_major_grade()
+        var major_count = calculate_major_count();
+        //console.log(grade_average);
+        //console.log(credit_sum);
+
+        if (grade_average < 0) { // 점수가 잘못 되었을 때
+            alert("점수를 입력해주세요");
+            document.getElementById("grade"+(-grade_average)).focus();  // 커서를 옮김
+            return
+        }
+
+        if (credit_sum < 0){
+            alert("학점를 입력해주세요");
+            document.getElementById("credit"+(-credit_sum)).focus();
+            return
+        }
+
+        document.getElementById("average").innerHTML = "총 평점 : " + grade_average;
+        document.getElementById("major-average").innerHTML = "전공 평점 : " + major_grade_average;
+        document.getElementById("credit").innerHTML = "이수 학점 : " + credit_sum;
+        document.getElementById("major-count").innerHTML = "전공 이수 : " + major_count;
+    }
+
+    function calculate_grades() {
+        var grade = new Array();
+        var grade_average;
+        var grade_sum = 0;
+
+        for(i=1;i<id_count;i++){
+            var gradeid = document.getElementById("grade"+i);
+
+            if( gradeid.value == "A+") grade.push(4.5);
+            else if( gradeid.value == "A") grade.push(4.0);
+            else if( gradeid.value === "B+") grade.push(3.5);
+            else if( gradeid.value === "B") grade.push(3.0);
+            else if( gradeid.value === "C+") grade.push(2.5);
+            else if( gradeid.value === "C") grade.push(2.0);
+            else if( gradeid.value === "D+") grade.push(1.5);
+            else if( gradeid.value === "D") grade.push(1.0);
+            else if( gradeid.value === "F") grade.push(0);
+            else {
+                return -i;
+            }
+            //console.log(grade[i-1]);
+        }
+
+        for( i = 0; i< id_count-1; i++){
+            grade_sum += grade[i];
+        }
+        grade_average = grade_sum / (id_count-1);
+        //console.log(grade_average);
+        return grade_average.toFixed(2);
+    }
+
+    function calculate_credits(){
+
+        var credit_sum = 0;
+        for(i=1;i<id_count;i++){
+            var credit_id = document.getElementById("credit"+i);
+            if(credit_id.value === "" || credit_id.value < 0) return -i; // 잘못된 값을 받으면 잘못된 id값을 리턴
+            credit_sum += Number(document.getElementById("credit"+i).value);
+        }
+        return credit_sum;
+    }
+
+    function calculate_major_grade(){
+
+        var grade = new Array();
+        var count = 1;
+        var major_grade_average;
+        var grade_sum = 0;
+
+        for(i=1;i<id_count;i++){
+            var gradeid = document.getElementById("grade"+i);
+            var is_checked = document.getElementById("is-major"+i)
+
+            if( is_checked.checked == true ){
+
+                if( gradeid.value === "A+") grade.push(4.5);
+                else if( gradeid.value === "A") grade.push(4.0);
+                else if( gradeid.value === "B+") grade.push(3.5);
+                else if( gradeid.value === "B") grade.push(3.0);
+                else if( gradeid.value === "C+") grade.push(2.5);
+                else if( gradeid.value === "C") grade.push(2.0);
+                else if( gradeid.value === "D+") grade.push(1.5);
+                else if( gradeid.value === "D") grade.push(1.0);
+                else if( gradeid.value === "F") grade.push(0);
+
+                count += 1;
+            }
+        }
+
+        for( i = 0; i < count-1; i++){
+            grade_sum += grade[i];
+        }
+        major_grade_average = grade_sum / (count-1)
+        // console.log(count-1);
+        // console.log(major_grade_average);
+        if(count-1 == 0) major_grade_average = 0;
+        return major_grade_average.toFixed(2);
+    }
+
+    function calculate_major_count() {
+        var sum = 0;
+        for(i=1;i<id_count;i++){
+            var is_checked = document.getElementById("is-major"+i)
+            if( is_checked.checked == true ) sum += Number(document.getElementById("credit"+i).value);
+        }
+        return sum;
+    }
+
+    </script>
+
+
+</div>
+
+
+{% endblock content %}

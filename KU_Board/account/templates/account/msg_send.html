@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table">
+<br>
+
+    <tbody>
+        <form method="POST" class="send-form">
+            {% csrf_token %}
+            <tr>
+                <td><input type="text" placeholder="상대방 닉네임" name="counter" class="form-control" style="border:0"/></td>
+            </tr>
+            <tr>
+                <td><textarea cols="70" rows="10" placeholder="내용" name="content" class="form-control" style="border:0"></textarea></td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <button type="button" onclick= "location.href='/account/msg/'" class="save btn btn-info float-right">목록으로</button>
+                    <button type="submit" class="save btn btn-info float-right" style="margin-right:10px">작성</button>
+                </td>
+            </tr>
+        </form>
+    </tbody>
+</table>
+
+
+{% endblock content %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>야부리타임</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+
+
+<div class="container-fluid">
+    <div class="card-title" align="middle">
+        <h1>야부리타임</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="span2">
+                여기에는 홈페이지 소개 내용이 들어갈 것 <br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+                크기를 잡을 텍스트<br>
+            </div>
+        </div>
+
+        <div class="col-md-4" align="middle">
+            {% if user.username %}
+            <button type="button" class="btn btn-info btn-lg btn-block"
+                    onclick= "location.href='/account/signout/'" class="save btn btn-light">{{user.nickname}} 님, 로그아웃</button><br>
+            {% else %}
+
+            <button type="button" class="btn btn-info btn-lg btn-block"
+                    onclick= "location.href='/account/signin/'" class="save btn btn-light">로그인</button><br>
+            {% endif %}
+            {% if not user.username %}
+            <button type="button" class="btn btn-info btn-lg btn-block"
+                    onclick= "location.href='/account/signup/'" class="save btn btn-light">야부리타임 회원가입</button>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
+
+
+
+

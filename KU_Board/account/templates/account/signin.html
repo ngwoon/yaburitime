@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin/css/base.css' %}" />
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+    <form action="/account/signin/" method="post">
+        {% csrf_token %}
+        <div id="login"> <br>
+            아이디&nbsp&nbsp&nbsp&nbsp&nbsp: <input type="text" placeholder="아이디" name="username"> <br>
+            비밀번호&nbsp: <input type="password" placeholder="비밀번호" name="password">
+            <input type="submit" value="로그인"> <br> <br>
+            &nbsp&nbsp아직 이 곳 회원이 아니신가요? <a href="/account/signup/">회원가입</a>
+        </div>
+    </form>
+</body>
+</html>
