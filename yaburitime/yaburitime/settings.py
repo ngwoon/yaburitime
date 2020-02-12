@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'KU_Board.urls'
+ROOT_URLCONF = 'yaburitime.urls'
 
 TEMPLATES = [
     {
@@ -70,8 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'KU_Board.wsgi.application'
-
+WSGI_APPLICATION = 'yaburitime.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
