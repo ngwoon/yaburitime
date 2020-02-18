@@ -1,5 +1,8 @@
 venv/
 .idea/
+db/
+db.sqlite3
+settings.py
 *.log
 *.pot
 *.pyc
