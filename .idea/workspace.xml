@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bfebeab2-491c-44c3-bf84-744ce95f6674" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/yaburitime/account/static/css/etcstyles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaburitime/account/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/yaburitime/account/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaburitime/account/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/yaburitime/account/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaburitime/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/yaburitime/account/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaburitime/account/templates/account/msg_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/yaburitime/account/templates/account/msg_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaburitime/account/templates/account/msg_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/yaburitime/account/templates/account/msg_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaburitime/account/templates/account/msg_send.html" beforeDir="false" afterPath="$PROJECT_DIR$/yaburitime/account/templates/account/msg_send.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaburitime/account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/yaburitime/account/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaburitime/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/yaburitime/account/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaburitime/board/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/yaburitime/board/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaburitime/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/yaburitime/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yaburitime/timetable/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/yaburitime/timetable/migrations/0001_initial.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
