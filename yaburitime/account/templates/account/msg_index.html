@@ -2,32 +2,43 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="col-md-9">
-        <div class="container-fluid">
-            <table class="table table-striped">
-                <thead>
-                <br>
-                    <h1 align="left">쪽지함</h1>
-                    <div align="right">
-                        <button type="button" class="btn btn-danger" onclick="location.href='/account/sendmsg/'">쪽지 보내기</button>
-                    </div>
-                <br>
-                </thead>
-                    <form action="/account/msg/" method="post">
-                    {% for counter in msg_counters %}
-                        {%csrf_token%}
-                        <td>
-                            <strong>{{counter}}</strong> 님과의 메세지
-                            <input type="hidden" name="counter" value="{{counter}}">
-                            <div align="right"> <button type="submit">확인하기</button> </div>
-                        </td>
-                    {% endfor %}
-                    </form>
-            </table>
-        </div>
-    </div>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/etcstyles.css' %}">
 
+<div class="col-md-9">
+    <div class="container-fluid">
+        <table class="table">
+            <thead>
+            <br>
+                <div class="alignleft">
+                    <h1>쪽지함</h1>
+                </div>
+                <div class="alignright">
+                    <button type="button" class="btn btn-danger" onclick="location.href='/account/sendmsg/'">쪽지 보내기</button>
+                </div>
+                <div style="clear: both;"></div>
+            <br>
+            </thead>
+            <tbody>
+                {% for counter in msg_counters %}
+                    <th>
+                        <form action="/account/msg/" method="post">
+                            {%csrf_token%}
+                            <div class="alignleft">
+                                <strong>{{counter}}</strong> 님과의 쪽지
+                            </div>
+                            <div class="alignright">
+                                <input type="hidden" name="counter" value="{{counter}}">
+                                <button style="border: 2px solid skyblue;" type="submit">확인하기</button>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </form>
+                    </th>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
+
 
 {% endblock %}

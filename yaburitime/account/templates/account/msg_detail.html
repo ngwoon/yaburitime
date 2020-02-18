@@ -2,28 +2,45 @@
 
 {% block content %}
 
+{% load static %}
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!--<link rel=”stylesheet” href=”http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css“>-->
+<link rel="stylesheet" href="{% static 'css/etcstyles.css' %}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <br><h2>{{counter}} 님과의 대화</h2>
-    <br><br><br>
+
+    <div class="alignleft">
+        <h2>{{counter}} 님과의 대화</h2>
+    </div>
+    <div class="alignright">
+        <span class="btn btn-danger">대화내용 삭제</span>
+    </div>
+    <div style="clear: both;"></div>
+
+    <hr class="one">
+
     {% for msg in msg_list %}
-        {% if msg.owner.nickname == user.nickname %}
-            <div style="text-align:left; color:red;">
-                <h3><span class="label label-info">{{msg.content}}</span></h3>
-                <div style="text-align:left; color:blue; margin-top:5px;">
+        {% if msg.sender == user.nickname %}
+            <div class="container">
+                <div style="text-align:left; font-family:sans-serif; color: #282828;">
+                    <h4>{{msg.content}}</h4>
+                </div>
+                <span class="time-left">
                     <h6>{{msg.datetime}}</h6>
-                </div> <br>
-            </div> <br>
+                </span>
+            </div>
 
         {% else %}
-            <div style="text-align:right; color:blue;">
-                <h3><span class="label label-danger">{{msg.content}}</span></h3>
-                <div style="text-align:right; color:red; margin-top:5px;">
+            <div class="container darker">
+                <div style="text-align:right; font-family:sans-serif; color: #282828;">
+                    <h4>{{msg.content}}</h4>
+                </div>
+                <span class="time-right">
                     <h6>{{msg.datetime}}</h6>
-                </div> <br>
-            </div> <br>
+                </span>
+            </div>
         {% endif %}
     {% endfor %}
 {% endblock content %}
